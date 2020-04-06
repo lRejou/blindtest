@@ -81,7 +81,7 @@ class MainController extends AbstractController
         $musique->setOeuvre($request->get('oeuvre'));
         $musique->setDescription($request->get('desc'));
         $musique->setTimeur($request->get('timer'));
-        $musique->setDifficulte($request->get('annee'));
+        $musique->setDifficulte($request->get('diff'));
         $musique->setAnnee($request->get('annee'));
         $musique->setLink($request->get('idvideo'));
         $musique->setTheme($request->get('theme'));
