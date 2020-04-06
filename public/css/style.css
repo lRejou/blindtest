@@ -1,9 +1,91 @@
 body{
     margin: 0;
     padding: 0;
+    font-family: 'Raleway', sans-serif;
+}
+h1{
+    font-family: 'Lilita One', cursive;
+}
+h2{
+    font-family: 'Lilita One', cursive;
+}
+h3{
+    font-family: 'Lilita One', cursive;
+}
+h4{
+    font-family: 'Lilita One', cursive;
+}
+h5{
+    font-family: 'Lilita One', cursive;
+    font-size: 30px;
+    margin: 0;
+}
+h6{
+    font-family: 'Raleway', sans-serif;;
+    font-size: 16px;
+    margin: 0;
 }
 #player{
     overflow: hidden;
     height: 0px;
     width: 0px;
 }
+
+header{
+    text-align: center;
+    box-shadow: 0px 0px 5px silver;
+    width: 100%;
+    padding: 5px;
+    height: auto;
+}
+.button{
+    background-color: #1FA41C ;
+    color: white;
+    padding: 10px 50px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.formulaire{
+    height: auto;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 5px 5px silver;
+    display: flex;
+    justify-content: center;
+}
+.boxForm{
+    border: solid 1px silver;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+
+}
+.annotation{
+    color: grey;
+    font-size: 13px;
+}
+
+#compteur{
+    font-family: 'Lilita One', cursive;
+    text-align: center;
+    font-size: 80px;
+}
+#reponse{
+    font-family: 'Lilita One', cursive;
+    text-align: center;
+}
+#reponse span{
+    display: block;
+}
+.oeuvre{
+    font-size: 80px;
+}
+
+.titre{
+    font-size: 50px;
+    color: #1A5276;
+}
+
+

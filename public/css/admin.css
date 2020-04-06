@@ -1,0 +1,64 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+}
+.musiquestitre{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+    padding: 10px 0px;
+    border-bottom: skyblue solid 1px;
+}
+.musiquestitre > div{
+    width: 20%;
+}
+.musiques{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px 0px;
+    border-bottom: skyblue solid 1px;
+}
+.musiques > div{
+    width: 20%;
+}
+.buttonSetting{
+    padding: 0px 10px;
+    color: #2980B9;
+    font-size: 18px;
+}
+.buttonDelete{
+    padding: 0px 10px;
+    font-size: 18px;
+    color: #CB4335;
+}
+.buttonAdd{
+    color: white;
+    background-color: #2980B9 ;
+    border-radius: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    display: block;
+    margin: 30px 0px;
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+#valide{
+    background-color: #229954;
+    color: white;
+    border-radius: 5px;
+    border: solid 1px #229954;
+    font-size: 20px;
+    width: 300px;
+    height: 40px;
+    margin: 20px 0px;
+}

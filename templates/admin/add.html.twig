@@ -1,0 +1,116 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>Ajouter une musique</h1>
+        <a href="/admin">Retour</a>
+        <div>
+            <h6>Titre</h6>
+            <input type="text" id="titre" />
+        </div>
+
+        <div>
+            <h6>Oeuvre ( film ou artiste )</h6>
+            <input type="text" id="oeuvre" />
+        </div>
+
+        <div>
+            <h6>Description</h6>
+            <input type="text" id="desc" />
+        </div>
+
+        <div>
+            <h6>timer</h6>
+            <input type="number" id="timer" value="0" />
+        </div>
+
+        <div>
+            <h6>Difficulté</h6>
+            <select id="diff">
+                <option value="0">Facile</option>
+                <option value="1">Difficile</option>
+                <option value="2">Ultra difficile</option>
+                <option value="3">Impossible</option>
+            </select>
+        </div>
+
+        <div>
+            <h6>Année</h6>
+            <input type="number" id="annee" value="2000" />
+        </div>
+
+        <div>
+            <h6>ID youtube de la vidéo</h6>
+            <input type="text" id="link" placeholder="A0QkGThnKNQ" />
+        </div>
+
+        <div>
+            <h6>theme</h6>
+            <select id="theme">
+                <option value="film">Film</option>
+                <option value="musique">Musique</option>
+            </select>
+        </div>
+
+        <button id="valide" > <i class="fas fa-folder-plus"></i> Validation</button>
+
+
+    </div>
+
+
+    <script>
+
+        var titre;
+        var oeuvre;
+        var desc;
+        var timer;
+        var diff;
+        var annee;
+        var idvideo;
+        var theme;
+
+
+        $( "#valide" ).click(function() {
+            titre = $('#titre').val();
+            oeuvre = $('#oeuvre').val();
+            desc = $('#desc').val();
+            timer = $('#timer').val();
+            diff = $('#diff').val();
+            annee = $('#annee').val();
+            idvideo = $('#link').val();
+            theme = $('#theme').val();
+
+            getJson();
+             
+
+        });
+
+
+        function getJson(){
+            $.ajaxSetup({async: false});
+                $.ajax({
+                    url : '/admin/ajaxadd/'+titre+"/"+oeuvre+"/"+desc+"/"+timer+"/"+diff+"/"+annee+"/"+idvideo+"/"+theme,
+                    type : 'GET',
+                    dataType : 'html',
+                    success : function(code_html, statut){ // success est toujours en place, bien sûr !
+                       alert('Valide ! '); 
+                    },
+                    error : function(resultat, statut, erreur){
+                        alert('error ! ')
+                    }
+
+                });
+            $.ajaxSetup({async: true});
+        }
+
+
+
+
+    </script>
+
+
+
+{% endblock %}

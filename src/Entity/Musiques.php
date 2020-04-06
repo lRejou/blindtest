@@ -51,6 +51,11 @@ class Musiques
      */
     private $link;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $theme;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +141,18 @@ class Musiques
     public function setLink(string $link): self
     {
         $this->link = $link;
+
+        return $this;
+    }
+
+    public function getTheme(): ?string
+    {
+        return $this->theme;
+    }
+
+    public function setTheme(string $theme): self
+    {
+        $this->theme = $theme;
 
         return $this;
     }

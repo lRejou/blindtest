@@ -1,6 +1,8 @@
 var listID = [];
 var tempsBlindTest = 20000;
 var tempsDeLaSolution = 5000;
+var difficulte = 0000;
+var theme = [];
 
 
 
@@ -9,6 +11,8 @@ var tempsDeLaSolution = 5000;
 $(document).ready(function() {
     $( "#button-start" ).click(function() {
         
+        initConfig();
+
         //Recuperation de la liste des ID des musiques du blind test
         getJson( 20 , ['film']);
 
@@ -19,7 +23,45 @@ $(document).ready(function() {
     });
 });
 
+function initConfig(){
+    //Temps du blind test
+    valDureeMusique = $("#dureeMusique").val();
+    tempsBlindTest = parseInt(valDureeMusique) * 1000;
 
+    //Temps pour trouver les réponses
+    valDureeReponse = $("#dureeReponse").val();
+    tempsDeLaSolution = parseInt(valDureeReponse) * 1000;
+
+    //Difficulté
+    if($('#checkDiff1').is(':checked')){
+        difficulte = difficulte + 1;
+    }
+    if($('#checkDiff2').is(':checked')){
+        difficulte = difficulte + 10;
+    }
+    if($('#checkDiff3').is(':checked')){
+        difficulte = difficulte + 100;
+    }
+    if($('#checkDiff4').is(':checked')){
+        difficulte = difficulte + 1000;
+    }
+
+
+    //Theme
+    if($('#checkThemeFilms').is(':checked')){
+        theme.push("film");
+    }
+    if($('#checkThemeMusiques').is(':checked')){
+        theme.push("musique");
+    }
+    theme = theme.join('!');
+
+
+
+    $(".formulaire").hide();
+    $("#button-start").hide();
+
+}
 
 
 
@@ -39,7 +81,7 @@ function StartGame(){
 
 function lancementVideo(oneMusique){
 
-    var startVideo = 0;
+    var startVideo = oneMusique['timeur'];
     var endVideo = startVideo + 50;
 
     videoActuel = oneMusique['link'];
@@ -68,13 +110,14 @@ function decompte(oneMusique){
     }
 
     function affichageTimer(){
-        $("#compteur").html(time +'s')
+        $("#compteur").html(time)
         timer();
     }
 }
 function affichageReponse(oneMusique){
     console.log(oneMusique);
-    $("#reponse").html("<span>"+oneMusique['titre']+"</span> <span>"+oneMusique['oeuvre']+"</span>");
+    $("#reponse").html(" <span class='oeuvre'>"+oneMusique['oeuvre']+"</span><span class='titre'>"+oneMusique['titre']+"</span>");
+    //$("#reponse").html(" <span class='oeuvre'>"+oneMusique['oeuvre']+"</span><span class='titre'>Sophie, tu bois 10 gorgées</span>");
 
     setTimeout(function(){
         $("#reponse").html("...");
@@ -82,41 +125,4 @@ function affichageReponse(oneMusique){
 
 
 }
-
-
-
-function getJson(time, tag){
-    $.ajaxSetup({async: false});
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "/listsound",
-        data: "action=loadall&id=1",
-        complete: function(data) {
-            listID = JSON.parse(data.responseText);
-            console.log("recuperation des ID des musiques...")
-        }
-    });
-    $.ajaxSetup({async: true});
-}
-function getOneMusique(id){
-    console.log('recuperation de la musique' + id);
-    var oneMusique;
-    $.ajaxSetup({async: false});
-    $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: "/onemusique/"+id,
-        async: false, 
-        complete: function(data) {
-            oneMusique = JSON.parse(data.responseText);
-        }
-    });
-    $.ajaxSetup({async: true});
-    return oneMusique;
-}
-
-
-
-
 

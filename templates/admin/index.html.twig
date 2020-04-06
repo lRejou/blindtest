@@ -1,0 +1,43 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>Liste des musiques</h1>
+        <a class="buttonAdd" href="/admin/add" ><i class="fas fa-plus"></i> Ajouter une musique</a>
+            <div class="musiquestitre">
+                <div>THEME</div>
+                <div>TITRE</div>
+                <div>OEUVRE / ARTISTE</div>
+                <div>ANNÉE</div>
+                <div></div>
+            </div>
+            {% for musique in musiques %}
+
+                <div class="musiques">
+                    <div>{{musique.theme}}</div>
+                    <div>{{musique.titre}}</div>
+                    <div>{{musique.oeuvre}}</div>
+                    <div>{{musique.annee}}</div>
+                    <div>
+                        <a class="buttonSetting" href="/admin/modif/{{musique.id}}"><i class="fas fa-sliders-h"></i></a>
+
+                        <a class="buttonDelete" href="/admin/modif/{{musique.id}}"><i class="far fa-trash-alt"></i></a>
+                    
+                    </div>
+                
+                
+                
+                </div>
+
+            {% endfor %}
+        
+
+
+    </div>
+
+
+
+{% endblock %}

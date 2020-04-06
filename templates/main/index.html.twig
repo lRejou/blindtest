@@ -5,16 +5,61 @@
 {% block body %}
 
 <div>
-    <h1>BlindTest version Alpha ! </h1>
+    <header>
+        <h1>BlindTest version Alpha ! </h1>
+    </header>
+    
 
 
-    <div id="button-start">new game</div>
+    <div id="button-start" class="button">NOUVELLE PARTIE <i class="fas fa-chevron-right"></i> <i class="fas fa-chevron-right"></i></div>
+
+    <div class="formulaire">
+        <div class="boxForm">
+            <h5>Durée</h5>
+            <p>
+                <h6>Durée de la musique musique : <span class="annotation">(en seconde)</span></h6>
+                <input id="dureeMusique" type="number" value="15"/><br>
+                <span class="annotation">Décompte + Réponse</span>
+            </p>
+            <p>
+                <h6>Durée de la réponse : <span class="annotation">(en seconde)</span></h6>
+                <input id="dureeReponse" type="number" value="5"/>
+            </p>
+        </div>
+
+
+        <div class="boxForm">
+            <h5>Difficulté</h5>
+            <p>
+                <input id="checkDiff1" type="checkbox" checked/> Facile<br>
+                <input id="checkDiff2" type="checkbox"/> Difficile<br>
+                <input id="checkDiff3" type="checkbox"/> Ultra difficile<br>
+                <input id="checkDiff4" type="checkbox"/> Impossible<br>
+            </p>
+        </div>
+
+        <div class="boxForm">
+            <h5>Thème (s) :</h5>
+            <p>
+                <input id="checkThemeFilms" type="checkbox" checked/> Films<br>
+                <input id="checkThemeMusiques" type="checkbox" checked/> Musiques<br>
+                Jeux Vidéo<span class="annotation">(Bientot disponible)</span><br>
+                Dessin animé<span class="annotation">(Bientot disponible)</span><br>
+                Animé<span class="annotation">(Bientot disponible)</span><br>
+                Film d'animation<span class="annotation">(Bientot disponible)</span><br>
+                Même<span class="annotation">(Bientot disponible)</span><br>
+            </p>
+        </div>
+    
+    </div>
 
     <div id="player"></div>
 
-    <div id="compteur">15 s</div>
+    <div id="compteur"></div>
 
-    <div id="reponse">...</div>
+    <div id="reponse"></div>
+
+    
 
 
 
