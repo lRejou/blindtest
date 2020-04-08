@@ -87,5 +87,15 @@ header{
     font-size: 50px;
     color: #1A5276;
 }
+.addMusique{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    padding: 10px 30px;
+
+}
 
 

@@ -62,3 +62,56 @@ body{
     height: 40px;
     margin: 20px 0px;
 }
+
+.page-add{
+    display: flex;
+}
+.page-add > .container{
+    width: 50%;
+    z-index: 100;
+    box-shadow: 0px 0px 5px grey;
+    font-size: 18px;
+    text-align: center;
+}
+.page-add > .container-titre{
+    width: 50%;
+    background-color: #F5F5F5;
+    overflow-Y: scroll;
+}
+.container-titre h1{
+    padding-left: 50px;
+}
+
+.add-onetitre{
+    display: flex;
+    padding: 0px 20px;
+}
+.add-onetitre > div{
+    width: 50%;
+    text-align: left;
+}
+
+.modal{
+    z-index: 200;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 300px;
+    width: auto;
+    background-color: white;
+    box-shadow: 0px 0px 30px black;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+.modal > img{
+    height: 300px;
+}
+.dernier-titre{
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+    background-color: green;
+    color: white;
+    padding: 20px 0px;
+    display: none;
+}

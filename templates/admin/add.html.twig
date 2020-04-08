@@ -3,6 +3,11 @@
 {% block title %}Admin{% endblock %}
 
 {% block body %}
+<div class="page-add">
+
+    <div class="modal">
+        <img src="https://thumbs.gfycat.com/VagueSnarlingIcelandicsheepdog-size_restricted.gif"/>
+    </div> 
 
     <div class="container">
         <h1>Ajouter une musique</h1>
@@ -61,6 +66,33 @@
     </div>
 
 
+
+    <div class="container-titre">
+    <h1>Ajouter une musique</h1>
+
+    <div class="dernier-titre" >Dernière musique ajoutée : <span class="spanderniertitre">titre</span></div>
+
+            <div class="add-onetitre">
+                <div><h3>Titre</h3></div>
+                <div><h3>Oeuvre</h3></div>
+
+
+            </div>
+        {% for musique in musiques %}
+            <div class="add-onetitre">
+                <div>{{musique.titre}}</div>
+                <div>{{musique.oeuvre}}</div>
+
+
+            </div>
+
+
+        {% endfor %}
+    </div>
+
+</div>
+
+
     <script>
 
         var titre;
@@ -84,8 +116,12 @@
             theme = $('#theme').val();
 
             getJson();
-             
 
+
+            $('#titre').val("");
+            $('#oeuvre').val("");
+            $('#link').val("");
+            $('#desc').val("");
         });
 
 
@@ -96,7 +132,10 @@
                     type : 'GET',
                     dataType : 'html',
                     success : function(code_html, statut){ // success est toujours en place, bien sûr !
-                       alert('Valide ! '); 
+                       $(".modal").css({"display" : "block"});
+                       setTimeout(function(){ $(".modal").css({"display" : "none"}); }, 1400);
+                       $(".dernier-titre").css({"display" : "block"});
+                       $(".spanderniertitre").html(titre + " - " + oeuvre)
                     },
                     error : function(resultat, statut, erreur){
                         alert('error ! ')

@@ -65,10 +65,29 @@ class MainController extends AbstractController
     /**
      * @Route("/admin/add", name="add", methods={"GET"})
      */
-    public function add()
+    public function add(MusiquesRepository $musiquesRepository)
+    {
+        $musiques = $musiquesRepository->findAll();
+        return $this->render('admin/add.html.twig', ["musiques" => $musiques]);
+    }
+
+    /**
+     * @Route("/admin/delete/{id}", name="delete", methods={"GET"})
+     */
+    public function delete(MusiquesRepository $musiquesRepository, Request $request)
     {
 
-        return $this->render('admin/add.html.twig');
+        $id = $request->get('id');
+        
+
+        $musique =  $musiquesRepository->findOneBy(['id' => $id]);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($musique);
+        $em->flush();
+
+        	
+        return $this->redirectToRoute('admin');
     }
 
     /**
