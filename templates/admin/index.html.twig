@@ -5,27 +5,90 @@
 {% block body %}
 
     <div class="container">
-        <h1>Liste des musiques</h1>
-        <a class="buttonAdd" href="/admin/add" ><i class="fas fa-plus"></i> Ajouter une musique</a>
-        <h2>{{musiques | length }}  musiques</h2>
+
+        <h1 class="titrePageIndex">Liste des musiques</h1>
+
+        <div class="container-index-head">
+            <a class="buttonAdd" href="/admin/add" ><i class="fas fa-plus"></i> Ajouter une musique</a>
+            <h2>{{musiques | length }}  musiques</h2>
+        </div>
+
+
             <div class="musiquestitre">
-                <div>THEME</div>
-                <div>TITRE</div>
-                <div>OEUVRE / ARTISTE</div>
-                <div>ANNÉE</div>
+
+                <div>TITRE
+                    {% if type == 'titre' and order == 'asc' %}
+                        <a  style="color:red" href="/admin/filtre/titre/desc"><i class="fas fa-sort-down"></i></a>
+                    {% elseif type == 'titre'%}
+                        <a style="color:red" href="/admin/filtre/titre/asc"><i class="fas fa-sort-up"></i></a>
+                    {% else %}
+                        <a href="/admin/filtre/titre/asc"><i class="fas fa-sort-up"></i></a>
+                    {% endif %}
+                </div>
+
+                <div>OEUVRE / ARTISTE
+                    {% if type == 'oeuvre' and order == 'asc' %}
+                        <a style="color:red" href="/admin/filtre/oeuvre/desc"><i class="fas fa-sort-down"></i></a>
+                    {% elseif type == 'oeuvre'%}
+                        <a style="color:red" href="/admin/filtre/oeuvre/asc"><i class="fas fa-sort-up"></i></a>
+                    {% else %}
+                        <a href="/admin/filtre/oeuvre/asc"><i class="fas fa-sort-up"></i></a>
+                    {% endif %}
+                </div>
+
+                <div>THEME
+                    {% if type == 'theme' and order == 'asc' %}
+                        <a style="color:red" href="/admin/filtre/theme/desc"><i class="fas fa-sort-down"></i></a>
+                    {% elseif type == 'theme'%}
+                        <a style="color:red" href="/admin/filtre/theme/asc"><i class="fas fa-sort-up"></i></a>
+                    {% else %}
+                        <a href="/admin/filtre/theme/asc"><i class="fas fa-sort-up"></i></a>
+                    {% endif %}
+                </div>
+
+                <div>Sous-theme
+                    {% if type == 'sousCat' and order == 'asc' %}
+                        <a style="color:red" href="/admin/filtre/sousCat/desc"><i class="fas fa-sort-down"></i></a>
+                    {% elseif type == 'sousCat'%}
+                        <a style="color:red" href="/admin/filtre/sousCat/asc"><i class="fas fa-sort-up"></i></a>
+                    {% else %}
+                        <a href="/admin/filtre/sousCat/asc"><i class="fas fa-sort-up"></i></a>
+                    {% endif %}
+                </div>
+
+                <div>ANNÉE
+                    {% if type == 'annee' and order == 'asc' %}
+                        <a style="color:red" href="/admin/filtre/annee/desc"><i class="fas fa-sort-down"></i></a>
+                    {% elseif type == 'annee'%}
+                        <a style="color:red" href="/admin/filtre/annee/asc"><i class="fas fa-sort-up"></i></a>
+                    {% else %}
+                        <a href="/admin/filtre/annee/asc"><i class="fas fa-sort-up"></i></a>
+                    {% endif %}
+                </div>
+
                 <div></div>
+
+
+
+
+
             </div>
+
+            <div class="containerAllMusique">
             {% for musique in musiques %}
 
                 <div class="musiques">
-                    <div>{{musique.theme}}</div>
+                    
                     <div>{{musique.titre}}</div>
                     <div>{{musique.oeuvre}}</div>
+                    <div>{{musique.theme}}</div>
+                    <div>{{musique.sousCat}}</div>
                     <div>{{musique.annee}}</div>
-                    <div>
+                    <div class="SettindAndDelete">
                         <a class="buttonSetting" href="/admin/modif/{{musique.id}}"><i class="fas fa-sliders-h"></i></a>
 
-                        <a class="buttonDelete" href="/admin/delete/{{musique.id}}"><i class="far fa-trash-alt"></i></a>
+                        <a class="buttonDelete" onclick="deleteSong('{{musique.id}}')" ><i class="far fa-trash-alt"></i></a>
+
                     
                     </div>
                 
@@ -35,8 +98,48 @@
 
             {% endfor %}
 
+            
+            </div>
+
+    </div>
+
+    <div id="modalDelete">
+        <div>
+            <img src="https://lh3.googleusercontent.com/proxy/9qyWAUGopsohXK1UkOvm1I3y7VpkYe3P3z5QAvmy79WbmuXKlrXty-xnuc3KN1BGvVhmik-MGI-bIHJVlH78qhIii7ja4FmfWZuBV1khNTyWVAC85mnk" />
+            <h3>Tu es sur de vouloir faire ça ?</h3>
+            <div>
+                <div class="nonDelete" onclick="closeModal()">
+                    Non !
+                </div>
+                <div class="ouiDelete" onclick="deleteConfirm()">
+                    Oui !
+                </div>
+            </div>
+
+            <div class="closeModal" onclick="closeModal()"><i class="fas fa-times"></i></div>
+
+        </div>
     </div>
 
 
 
+                        <script>
+
+                        var musiqueDelete = "";
+/*href="/admin/delete/"*/
+                        function deleteSong(id){
+                            musiqueDelete = id;
+                            $('#modalDelete').css({"display" : "block"});
+                        }
+
+                        function deleteConfirm(){
+                            document.location.href="/admin/delete/"+musiqueDelete; 
+                        }
+
+                        function closeModal(){
+                            musiqueDelete = "";
+                            $('#modalDelete').css({"display" : "none"});
+                        }
+
+                        </script>
 {% endblock %}

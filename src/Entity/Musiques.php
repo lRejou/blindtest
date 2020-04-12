@@ -54,6 +54,11 @@ class Musiques
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $sousCat;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $theme;
 
     public function getId(): ?int
@@ -141,6 +146,18 @@ class Musiques
     public function setLink(string $link): self
     {
         $this->link = $link;
+
+        return $this;
+    }
+
+    public function getSousCat(): ?string
+    {
+        return $this->sousCat;
+    }
+
+    public function setSousCat(string $sousCat): self
+    {
+        $this->sousCat = $sousCat;
 
         return $this;
     }

@@ -4,24 +4,38 @@ var tempsDeLaSolution = 5000;
 var difficulte = 0000;
 var theme = [];
 
+var numMusiqueActuel = 0 ;
+
+var pauseAndPlay = 0;
 
 
 
 // Fonction de lancement du jeu
 $(document).ready(function() {
     $( "#button-start" ).click(function() {
-        
         initConfig();
-
         //Recuperation de la liste des ID des musiques du blind test
         getJson( 20 , ['film']);
 
         //Lancement du blind test
-        StartGame();
-        
-
+        startGame();
     });
+
 });
+
+function fairePause(){
+    if(pauseAndPlay == 0){
+        pauseAndPlay = 1;
+        $("#pause").html("<div class='buttonPlay'><i class='far fa-play-circle'></i></div>");
+        $(".messagePause").css({"display" : "block"});
+    }else{
+        pauseAndPlay = 0;
+        startGame();
+        $("#pause").html("<div class='buttonPause'><i class='far fa-pause-circle'></i></div>");
+        $(".messagePause").css({"display" : "none"});
+    }
+}
+
 
 function initConfig(){
     //Temps du blind test
@@ -56,6 +70,8 @@ function initConfig(){
     }
     theme = theme.join('!');
 
+    //Apparation button play Pause
+    $("#pause").css({"display" : "flex"});
 
 
     $(".formulaire").hide();
@@ -64,9 +80,34 @@ function initConfig(){
 }
 
 
+function startGame(){
+    boucle();
+    var tempsBoucle = 0;
+    function boucle(){
+        setTimeout(function(){
+            tempsBoucle = tempsBlindTest;
+            if(pauseAndPlay == 1){
+                return;
+            }
+            else{
+                runSong();
+            }
+        }, tempsBoucle);
+    }
 
+    function runSong(){
+        console.log("playMusique");
 
-function StartGame(){
+        idmusique = listID[numMusiqueActuel];
+        oneMusique = getOneMusique(idmusique['id']);
+        lancementVideo(oneMusique);
+        numMusiqueActuel ++;
+        boucle();
+    }
+}
+
+//Ancienne fonction pas ouf, mais je la garde sous la main... On sait jamais
+/*function startGame(){
     var oneMusique;
 
     var timer = 0;
@@ -76,8 +117,19 @@ function StartGame(){
                 lancementVideo(oneMusique);
             }, timer);
             timer = timer + tempsBlindTest;
+        sleep(1000);
     });
-}
+
+}*/
+
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+        break;
+      }
+    }
+  }
 
 function lancementVideo(oneMusique){
 
@@ -122,7 +174,6 @@ function affichageReponse(oneMusique){
     setTimeout(function(){
         $("#reponse").html("...");
     },tempsDeLaSolution )
-
-
 }
+
 

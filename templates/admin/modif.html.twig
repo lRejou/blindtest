@@ -10,58 +10,58 @@
     </div> 
 
     <div class="container">
-        <h1 class="h1AddMusique">Ajouter une musique</h1>
+        <h1>Modifier une musique</h1>
         <div class="buttonRetour"><a href="/admin/filtre/titre/asc"><i class="fas fa-arrow-alt-circle-left"></i> Retour</a></div>
-        
-        <div class="divForm">
+        <div  class="divForm">
             <h6>Titre</h6>
-            <input type="text" id="titre" />
+            <input type="text" id="titre" value="{{ info.titre }}" />
         </div>
 
-        <div class="divForm">
+        <div  class="divForm">
             <h6>Oeuvre ( film ou artiste )</h6>
-            <input type="text" id="oeuvre" />
+            <input type="text" id="oeuvre" value="{{ info.oeuvre }}" />
         </div>
 
-        <div class="divForm">
+        <div  class="divForm">
             <h6>Description</h6>
-            <input type="text" id="desc" />
-        </div class="divForm">
-
-        <div class="divForm">
-            <h6>timer</h6>
-            <input type="number" id="timer" value="0" />
+            <input type="text" id="desc" value="{{ info.description }}" />
         </div>
 
-        <div class="divForm">
+        <div  class="divForm">
+            <h6>timer</h6>
+            <input type="number" id="timer" value="{{ info.timeur }}" />
+        </div>
+
+        <div  class="divForm">
             <h6>Difficulté</h6>
             <select id="diff">
-                <option value="0">Facile</option>
-                <option value="1">Difficile</option>
-                <option value="2">Ultra difficile</option>
-                <option value="3">Impossible</option>
+                <option value="0" {% if info.difficulte == 0 %} selected {% endif %}>Facile</option>
+                <option value="1" {% if info.difficulte == 1 %} selected {% endif %}>Difficile</option>
+                <option value="2" {% if info.difficulte == 2 %} selected {% endif %}>Ultra difficile</option>
+                <option value="3" {% if info.difficulte == 3 %} selected {% endif %}>Impossible</option>
             </select>
         </div>
 
-        <div class="divForm">
+        <div  class="divForm">
             <h6>Année</h6>
-            <input type="number" id="annee" value="2000" />
+            <input type="number" id="annee" value="{{ info.annee }}"  />
         </div>
 
-        <div class="divForm">
+        <div  class="divForm">
             <h6>ID youtube de la vidéo</h6>
-            <input type="text" id="link" placeholder="A0QkGThnKNQ" />
+            <input type="text" id="link" value="{{ info.link }}"/><br>
+            <iframe width="300" height="250" src="https://www.youtube.com/embed/{{ info.link }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <div class="divForm">
+        <div  class="divForm">
             <h6>theme</h6>
             <select id="theme">
-                <option value="film">Film</option>
-                <option value="musique">Musique</option>
+                <option value="film" {% if info.theme == 'film' %} selected {% endif %}>Film</option>
+                <option value="musique" {% if info.theme == 'musique' %} selected {% endif %}>Musique</option>
             </select>
         </div>
 
-        <div id="sousCatMusique" class="divForm">
+        <div id="sousCatMusique"  class="divForm">
             <h6>Sous cathégorie</h6>
             <select id="SelectCatMusique">
                 <option value="autre">autre ...</option>
@@ -91,7 +91,7 @@
 
     <h4 style="color:red;text-align:center">Avant d'ajouter, verifiez que votre musique n'existe pas deja<br>ctrl+F , pour la recherche</h4>
 
-    <div class="dernier-titre" >Dernière musique ajoutée : <span class="spanderniertitre">titre</span></div>
+    <div class="dernier-titre" >Dernière musique modifier : <span class="spanderniertitre">titre</span></div>
 
             <div class="add-onetitre">
                 <div><h3>Titre</h3></div>
@@ -116,13 +116,6 @@
 
     <script>
 
-        theme = $('#theme').val();
-        if(theme == "musique"){
-            $('#sousCatMusique').css({"display" : "block"});
-        }else{
-            $('#sousCatMusique').css({"display" : "none"});
-        }
-
         var titre;
         var oeuvre;
         var desc;
@@ -131,21 +124,19 @@
         var annee;
         var idvideo;
         var theme;
-        var sousCat = "none";
+        var sousCat;
 
-        $( "#theme" ).mouseup(function(){
-            
-            theme = $('#theme').val();
+        $('#SelectCatMusique').val( "{{ info.sousCat }}" );
+
             if(theme == "musique"){
                 $('#sousCatMusique').css({"display" : "block"});
             }else{
+                //$('#sousCatMusique').val("autre").change();
                 document.getElementById('SelectCatMusique').selectedIndex=0;
                 $('#sousCatMusique').css({"display" : "none"});
                 console.log("click");
                 
             }
-        });
-
 
         $( "#valide" ).click(function() {
             titre = $('#titre').val();
@@ -167,11 +158,25 @@
             $('#desc').val("");
         });
 
+        $( "#theme" ).mouseup(function(){
+            
+            theme = $('#theme').val();
+            if(theme == "musique"){
+                $('#sousCatMusique').css({"display" : "block"});
+            }else{
+                //$('#sousCatMusique').val("autre").change();
+                document.getElementById('SelectCatMusique').selectedIndex=0;
+                $('#sousCatMusique').css({"display" : "none"});
+                console.log("click");
+                
+            }
+        });
+
 
         function getJson(){
             $.ajaxSetup({async: false});
                 $.ajax({
-                    url : '/admin/ajaxadd/'+titre+"/"+oeuvre+"/"+desc+"/"+timer+"/"+diff+"/"+annee+"/"+idvideo+"/"+theme+"/"+sousCat,
+                    url : '/admin/ajaxmodif/{{ info.id }}/'+titre+"/"+oeuvre+"/"+desc+"/"+timer+"/"+diff+"/"+annee+"/"+idvideo+"/"+theme+"/"+sousCat,
                     type : 'GET',
                     dataType : 'html',
                     success : function(code_html, statut){ // success est toujours en place, bien sûr !
@@ -179,6 +184,9 @@
                        setTimeout(function(){ $(".modal").css({"display" : "none"}); }, 1400);
                        $(".dernier-titre").css({"display" : "block"});
                        $(".spanderniertitre").html(titre + " - " + oeuvre)
+
+                        document.location.href="/admin"; 
+
                     },
                     error : function(resultat, statut, erreur){
                         alert('error ! ')

@@ -97,5 +97,33 @@ header{
     padding: 10px 30px;
 
 }
+#pause{
+    display: none;
+    /*display: flex;*/
+    justify-content: center;
+    font-size: 40px;
+    text-align: center;
+}
+#pause > div{
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    transition: 0.3s;
+    cursor: pointer;
+}
+#pause > div:hover{
+    transform: scale(1.2);
+    transition: 0.3s;
+}
+.messagePause{
+    font-size: 30px;
+    display: block;
+    color: red;
+    display: none;
+    text-align: center;
+}
 
 

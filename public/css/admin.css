@@ -3,6 +3,22 @@ body{
     padding: 0;
     font-family: 'Raleway', sans-serif;
 }
+.titrePageIndex{
+    color: white;
+    text-align: center;
+    background-color: #2471A3;
+    margin: 0;
+    padding: 10px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 0px 10px silver;
+}
+.container-index-head{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 30px auto;
+}
 
 .container{
     width: 90%;
@@ -19,6 +35,10 @@ body{
 .musiquestitre > div{
     width: 20%;
 }
+.musiquestitre a {
+    color: #2980B9;
+    text-decoration: none;
+}
 .musiques{
     width: 100%;
     display: flex;
@@ -29,15 +49,45 @@ body{
 .musiques > div{
     width: 20%;
 }
+.SettindAndDelete{
+    display: flex;
+    justify-content: space-around;
+}
 .buttonSetting{
-    padding: 0px 10px;
     color: #2980B9;
     font-size: 18px;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    display: block;
+    border-radius: 50%;
+}
+.buttonSetting:hover{
+    color: white;
+    background-color: #2980B9;
+    border-radius: 50%;
+    transition: 0.3s;
+    transform: scale(1.6);
 }
 .buttonDelete{
-    padding: 0px 10px;
-    font-size: 18px;
     color: #CB4335;
+    font-size: 18px;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    display: block;
+    border-radius: 50%;
+}
+.buttonDelete:hover{
+    color: white;
+    background-color: #CB4335;
+    border-radius: 50%;
+    transition: 0.3s;
+    transform: scale(1.6);
 }
 .buttonAdd{
     color: white;
@@ -46,11 +96,16 @@ body{
     font-size: 20px;
     text-decoration: none;
     display: block;
-    margin: 30px 0px;
     width: 300px;
     height: 50px;
     line-height: 50px;
     text-align: center;
+    transition: 0.3s;
+}
+.buttonAdd:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 10px 10px silver;
+    transition: 0.3s;
 }
 #valide{
     background-color: #229954;
@@ -115,4 +170,124 @@ body{
     color: white;
     padding: 20px 0px;
     display: none;
+}
+
+
+.containerAllMusique{
+    height: 600px;
+    overflow-y: scroll;
+    font-size: 20px;
+}
+
+.h1AddMusique{
+    margin: 0;
+    padding: 10px 0px;
+    background-color: #2471A3;
+    color: white;
+}
+
+.buttonRetour{
+    text-align: left;
+    margin: 15px 0px;
+    padding-left: 15px ;
+}
+.buttonRetour a{
+    background-color: #2471A3;
+    color: white;
+    font-size: 25px;
+    text-decoration: none;
+    padding: 5px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+    transform: scale(1);
+    display: block;
+    width: 150px;
+    text-align: center;
+}
+.buttonRetour a:hover{
+    transition: 0.3s;
+    transform: scale(1.2);
+    box-shadow: 0px 10px 10px silver;
+}
+.divForm{
+    width: 300px;
+    margin: 10px auto;
+}
+.divForm h6{
+    margin: 0;
+    text-align: left;
+    font-size: 18px;
+    color: #2471A3;
+}
+.divForm input{
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 5px;
+    border: solid 1px silver;
+}
+
+#modalDelete{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+#modalDelete > div{
+    height: 400px;
+    width: 500px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    box-shadow: 0px 0px 15px black;
+}
+#modalDelete > div > img{
+    width: 500px;
+}
+#modalDelete > div > h3{
+    text-align: center;
+}
+#modalDelete > div > div{
+    display: flex;
+    justify-content: space-around;
+}
+#modalDelete > div > div > div{
+    display: block;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.nonDelete{
+    color: white;
+    background-color : red;
+}
+.ouiDelete{
+    color: white;
+    background-color : green;
+}
+.closeModal{
+    border: 2px white solid;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #2471A3;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50% , -50%);
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
 }
