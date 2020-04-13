@@ -19,7 +19,7 @@ class MusiquesRepository extends ServiceEntityRepository
         parent::__construct($registry, Musiques::class);
     }
 
-    public function findId($diff, $theme)
+    public function findId($diff, $theme, $soustheme)
     {
         $conn = $this->getEntityManager()->getConnection();
 
@@ -47,11 +47,23 @@ class MusiquesRepository extends ServiceEntityRepository
             $compteurTheme++;
         }
 
+        //soustheme
+        $compteurSousTheme = 0;
+        $whereSQLSousTheme = "";
+        foreach($soustheme as $key => $value){
+            if($compteurSousTheme != 0){
+                $whereSQLSousTheme = $whereSQLSousTheme . " or ";
+            }
+            $whereSQLSousTheme = $whereSQLSousTheme . 'sous_cat = "'.$value.'"';
+            $compteurSousTheme++;
+        }
+
+
         //Ecriture SQL
         $sql='
         SELECT id
         FROM musiques
-        WHERE ('.$whereSQLDiff.") AND (".$whereSQLTheme.')
+        WHERE ('.$whereSQLDiff.") AND (".$whereSQLTheme.') AND ('.$whereSQLSousTheme.')
         ORDER BY RAND()
         ';
 

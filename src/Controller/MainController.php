@@ -19,10 +19,13 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/listsound/{diff}/{theme}", name="listsound", methods={"GET"})
+     * @Route("/listsound", name="listsound", methods={"GET" , "POST"})
      */
     public function listsound( MusiquesRepository $musiquesRepository, Request $request )
     {
+        $soustheme = explode(",", $request->get('soustheme'));
+        //var_dump($soustheme);
+
         //Gestion de la difficulté
         $difficulte = $request->get('diff');
         $tabDiff = [0,0,0,0];
@@ -35,7 +38,7 @@ class MainController extends AbstractController
         $theme = explode('!', $request->get('theme'));
 
         //Requete SQL
-        $listmusique = $musiquesRepository->findId($tabDiff, $theme);
+        $listmusique = $musiquesRepository->findId($tabDiff, $theme, $soustheme);
 
         //Retour du json
         return $this->json($listmusique);

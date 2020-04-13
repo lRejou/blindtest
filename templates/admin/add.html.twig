@@ -12,30 +12,32 @@
     <div class="container">
         <h1 class="h1AddMusique">Ajouter une musique</h1>
         <div class="buttonRetour"><a href="/admin/filtre/titre/asc"><i class="fas fa-arrow-alt-circle-left"></i> Retour</a></div>
+
+        <div class="messageError">T'es le plus gros des enculés ! La prochaine fois que tu oublie l'oeuvre/artiste, je te nique ta race !</div>
         
         <div class="divForm">
             <h6>Titre</h6>
-            <input type="text" id="titre" />
+            <input type="text" id="titre"/>
         </div>
 
         <div class="divForm">
             <h6>Oeuvre ( film ou artiste )</h6>
-            <input type="text" id="oeuvre" />
+            <input type="text" id="oeuvre"/>
         </div>
 
         <div class="divForm">
             <h6>Description</h6>
-            <input type="text" id="desc" />
+            <input type="text" id="desc"/>
         </div class="divForm">
 
         <div class="divForm">
             <h6>timer</h6>
-            <input type="number" id="timer" value="0" />
+            <input type="number" id="timer" value="0" min="0"/>
         </div>
 
         <div class="divForm">
             <h6>Difficulté</h6>
-            <select id="diff">
+            <select id="diff" required="required">
                 <option value="0">Facile</option>
                 <option value="1">Difficile</option>
                 <option value="2">Ultra difficile</option>
@@ -45,24 +47,24 @@
 
         <div class="divForm">
             <h6>Année</h6>
-            <input type="number" id="annee" value="2000" />
+            <input type="number" id="annee" value="2000"/>
         </div>
 
         <div class="divForm">
-            <h6>ID youtube de la vidéo</h6>
-            <input type="text" id="link" placeholder="A0QkGThnKNQ" />
+            <h6>Lien de la video youtube</h6>
+            <input type="text" id="link" placeholder="A0QkGThnKNQ"/>
         </div>
 
         <div class="divForm">
-            <h6>theme</h6>
-            <select id="theme">
+            <h6>Thème</h6>
+            <select id="theme" required="required">
                 <option value="film">Film</option>
                 <option value="musique">Musique</option>
             </select>
         </div>
 
         <div id="sousCatMusique" class="divForm">
-            <h6>Sous cathégorie</h6>
+            <h6>Sous catégorie</h6>
             <select id="SelectCatMusique">
                 <option value="autre">autre ...</option>
                 <option value="français">Français</option>
@@ -146,6 +148,10 @@
             }
         });
 
+        function error(msg){
+            $(".messageError").css({"display" : "block"});
+            $(".messageError").html(msg);        
+        }
 
         $( "#valide" ).click(function() {
             titre = $('#titre').val();
@@ -154,11 +160,65 @@
             timer = $('#timer').val();
             diff = $('#diff').val();
             annee = $('#annee').val();
-            idvideo = $('#link').val();
+
+            var idvideo = getUrlVars()["v"];
+            function getUrlVars() {
+                var vars = {};
+                var parts = $('#link').val().replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                    vars[key] = value;
+                });
+                return vars;
+            }
+
             theme = $('#theme').val();
             sousCat = $('#SelectCatMusique').val();
 
-            getJson();
+            //console.log(idvideo);
+
+            if(titre == ""){
+                error("Tu as oublié le TITRE... Tu te fou de ma gueule ?!?");
+                return;
+            }
+            else if(oeuvre == ""){
+                error("T'es le plus gros des enculés ! La prochaine fois que tu oublie l'oeuvre/artiste, je te nique ta race !");
+                return;
+            }
+            else if(desc == ""){
+                error("Et la description ?! C'est pour les chiens ?");
+                return;
+            }
+            else if(titre.includes('?') || titre.includes('!') || titre.includes('..') || titre.includes('&')){
+                error('Pas de ?,!,..,& dans le titre , STP !"Louis est pas trop fait pour etre developpeur..."');
+                return;
+            }
+            else if(oeuvre.includes('?') || oeuvre.includes('!') || oeuvre.includes('..') || oeuvre.includes('&')){
+                error('Pas de ?,!,..,& dans l eouvre/artiste  , STP !"Louis est pas trop fait pour etre developpeur..."');
+                return;
+            }
+            else if(desc.includes('?') || desc.includes('!') || desc.includes('..') || desc.includes('&')){
+                error('Pas de ?,!,..,& dans la description , STP !"Louis est pas trop fait pour etre developpeur..."');
+                return;
+            }
+            else if(timer == ""){
+                error("Si tu veux pas de timer... Fou au moins un 0.... Grosse merde");
+                return;
+            }
+            else if(annee == ""){
+                error("Et ta musique ? Elle a pas d'année ? J'vais te fraper !");
+                return;
+            }
+            else if(idvideo == ""){
+                error("Et ton lien youtube ? Il est ou ? Tu m'explique ? Tu veux une rotule cassé ?");
+                return;
+            }
+            else{
+                $(".messageError").css({"display" : "none"});
+                getJson();
+            }
+
+
+
+            
 
 
             $('#titre').val("");

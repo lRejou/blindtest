@@ -1,4 +1,4 @@
-function getJson(time, tag){
+/*function getJson(time, tag){
     $.ajaxSetup({async: false});
     $.ajax({
         type: "GET",
@@ -10,7 +10,29 @@ function getJson(time, tag){
         }
     });
     $.ajaxSetup({async: true});
+}*/
+
+function getJson(){
+
+    var dataPage = 'diff=' + difficulte + '&theme=' + theme + '&soustheme=' + soustheme  ;
+
+    //var dataPage = $(dataPage).serialize();
+
+
+    $.ajaxSetup({async: false});
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        data : dataPage,
+        url: "/listsound",
+        complete: function(data) {
+            listID = JSON.parse(data.responseText);
+            console.log(data)
+        }
+    });
+    $.ajaxSetup({async: true});
 }
+
 function getOneMusique(id){
     console.log('recuperation de la musique' + id);
     var oneMusique;

@@ -1,24 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block title %}BindText On The Flex!{% endblock %}
 
 {% block body %}
 
 <div>
     <header>
-        <h1>BlindTest version Alpha ! </h1>
+        <h1>BlindTest on the Flex ! <br><span>(version Alpha)</span> </h1>
     </header>
     
-
-
-    <div id="button-start" class="button">NOUVELLE PARTIE <i class="fas fa-chevron-right"></i> <i class="fas fa-chevron-right"></i></div>
 
     <div class="formulaire">
         <div class="boxForm">
             <h5>Durée</h5>
             <p>
-                <h6>Durée de la musique musique : <span class="annotation">(en seconde)</span></h6>
-                <input id="dureeMusique" type="number" value="15"/><br>
+                <h6>Durée de la musique : <span class="annotation">(en seconde)</span></h6>
+                <input id="dureeMusique" type="number" value="25"/><br>
                 <span class="annotation">Décompte + Réponse</span>
             </p>
             <p>
@@ -26,15 +23,16 @@
                 <input id="dureeReponse" type="number" value="5"/>
             </p>
         </div>
+        
 
 
         <div class="boxForm">
             <h5>Difficulté</h5>
             <p>
                 <input id="checkDiff1" type="checkbox" checked/> Facile<br>
-                <input id="checkDiff2" type="checkbox"/> Difficile<br>
-                <input id="checkDiff3" type="checkbox"/> Ultra difficile<br>
-                <input id="checkDiff4" type="checkbox"/> Impossible<br>
+                <input id="checkDiff2" type="checkbox" checked/> Difficile<br>
+                <input id="checkDiff3" type="checkbox" checked/> Ultra difficile<br>
+                <input id="checkDiff4" type="checkbox" checked/> Impossible<br>
             </p>
         </div>
 
@@ -50,17 +48,42 @@
                 Même<span class="annotation">(Bientot disponible)</span><br>
             </p>
         </div>
+
+        <div class="boxForm sousTheme">
+            <h5>Sous thème (s) :</h5>
+            <div>
+                <div>
+                    <input id="checkThemeAutre" type="checkbox" checked/> Autre<br>
+                    <input id="checkThemeFrancais" type="checkbox" checked/> Français<br>
+                    <input id="checkThemePopulaire" type="checkbox" checked/> Populaire<br>
+                    <input id="checkThemeRap" type="checkbox" checked/> Rap<br>
+                    <input id="checkThemeRock" type="checkbox" checked/> Rock<br>
+                    <input id="checkThemePunk" type="checkbox" checked/> Punk<br>
+                    <input id="checkThemeMetal" type="checkbox" checked/> Metal<br>
+                </div>
+                <div>
+                    <input id="checkThemeReggae" type="checkbox" checked/> Reggae<br>
+                    <input id="checkThemeElectro" type="checkbox" checked/> Electro<br>
+                    <input id="checkThemeJazz" type="checkbox" checked/> Jazz<br>
+                    <input id="checkThemeContry" type="checkbox" checked/> Country<br>
+                    <input id="checkThemeNewwave" type="checkbox" checked/> New wave<br>
+                </div>
+            </div>
+        </div>
     
     </div>
+    <div id="button-start" class="button">NOUVELLE PARTIE <span><i class="fas fa-chevron-right"></i> <i class="fas fa-chevron-right"></i></span></div>
 
-    <div id="pause" onclick="fairePause()"><div><i class="far fa-pause-circle"></i></div><br></div>
-    <span class="messagePause">La pause sera active à la fin de la musique</span>
+    <div id="Game">
+        <div id="pause" onclick="fairePause()"><div><i class="far fa-pause-circle"></i></div><br></div>
+        <span class="messagePause">La pause sera active à la fin de la musique</span>
 
-    <div id="player"></div>
+        <div id="player"></div>
 
-    <div id="compteur"></div>
+        <div id="compteur"></div>
 
-    <div id="reponse"></div>
+        <div id="reponse"></div>
+    </div>
 
     
 
