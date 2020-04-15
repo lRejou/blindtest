@@ -4,11 +4,15 @@ var tempsDeLaSolution = 5000;
 var difficulte = 0000;
 var theme = [];
 var soustheme = [];
+var nbMusique = 0;
+var nbMusiqueEnCour = 0
 
 var numMusiqueActuel = 0 ;
 
 var pauseAndPlay = 0;
 var pauseActive = 0;
+
+var listMusiquePasse = [];
 
 
 function loadVideoYoutube(){
@@ -81,6 +85,30 @@ $(document).ready(function() {
         if($('#checkThemeMusiques').is(':checked')){
             theme.push("musique");
         }
+        if($('#checkThemeJeuxVideo').is(':checked')){
+            theme.push("jeuxvideo");
+        }
+        if($('#checkThemeSeries').is(':checked')){
+            theme.push("serie");
+        }
+        if($('#checkThemeDessinAnime').is(':checked')){
+            theme.push("dessinanime");
+        }
+        if($('#checkThemeFilmAnimation').is(':checked')){
+            theme.push("filmanimation");
+        }
+        if($('#checkThemeManga').is(':checked')){
+            theme.push("manga");
+        }
+        if($('#checkThemeMeme').is(':checked')){
+            theme.push("meme");
+        }
+        if($('#checkThemeYoutuber').is(':checked')){
+            theme.push("youtube");
+        }
+        if($('#checkThemeRepliqueCulte').is(':checked')){
+            theme.push("repliqueculte");
+        }
         theme = theme.join('!');
 
         //Sous Theme
@@ -152,6 +180,8 @@ $(document).ready(function() {
 
         function runSong(){
             console.log("playMusique");
+            nbMusiqueEnCour++;
+            $('#numberMusique').html(nbMusiqueEnCour+"/"+ nbMusique +" musiques")
 
             idmusique = listID[numMusiqueActuel];
             oneMusique = getOneMusique(idmusique['id']);
@@ -225,6 +255,10 @@ $(document).ready(function() {
         console.log(oneMusique);
         $("#reponse").html(" <span class='oeuvre'>"+oneMusique['oeuvre']+"</span><span class='titre'>"+oneMusique['titre']+"</span><span class='description'>"+oneMusique['description']+"</span>");
         //$("#reponse").html(" <span class='oeuvre'>"+oneMusique['oeuvre']+"</span><span class='titre'>Sophie, tu bois 10 gorgées</span>");
+
+
+        $(".containerMusiquePasse").prepend("<div><div class='idvideo'>"+numMusiqueActuel+"</div><div class='titreVideo'>"+oneMusique['titre']+"</div><div class='oeuvreVideo'>"+oneMusique['oeuvre']+"</div></div>")
+
 
         setTimeout(function(){
             $("#reponse").html("...");

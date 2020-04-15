@@ -27,7 +27,7 @@ function getJson(){
         url: "/listsound",
         complete: function(data) {
             listID = JSON.parse(data.responseText);
-            console.log(data)
+            nbMusique = listID.length;
         }
     });
     $.ajaxSetup({async: true});

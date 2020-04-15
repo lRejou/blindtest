@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}BindText On The Flex!{% endblock %}
+{% block title %}BindTest On The Flex!{% endblock %}
 
 {% block body %}
 
@@ -41,11 +41,14 @@
             <p>
                 <input id="checkThemeFilms" type="checkbox" checked/> Films<br>
                 <input id="checkThemeMusiques" type="checkbox" checked/> Musiques<br>
-                Jeux Vidéo<span class="annotation">(Bientot disponible)</span><br>
-                Dessin animé<span class="annotation">(Bientot disponible)</span><br>
-                Animé<span class="annotation">(Bientot disponible)</span><br>
-                Film d'animation<span class="annotation">(Bientot disponible)</span><br>
-                Même<span class="annotation">(Bientot disponible)</span><br>
+                <input id="checkThemeJeuxVideo" type="checkbox" checked/> Jeux vidéo<br>
+                <input id="checkThemeSeries" type="checkbox" checked/> Séries<br>
+                <input id="checkThemeDessinAnime" type="checkbox" checked/> Dessin animé<br>
+                <input id="checkThemeFilmAnimation" type="checkbox" checked/> Film d'animation<br>
+                <input id="checkThemeManga" type="checkbox" checked/> Manga<br>
+                <input id="checkThemeMeme" type="checkbox" checked/> Même<br>
+                <input id="checkThemeYoutuber" type="checkbox" checked/> Youtuber<br>
+                <input id="checkThemeRepliqueCulte" type="checkbox" checked/> Répliques cultes<br>
             </p>
         </div>
 
@@ -75,6 +78,7 @@
     <div id="button-start" class="button">NOUVELLE PARTIE <span><i class="fas fa-chevron-right"></i> <i class="fas fa-chevron-right"></i></span></div>
 
     <div id="Game">
+        
         <div id="pause" onclick="fairePause()"><div><i class="far fa-pause-circle"></i></div><br></div>
         <span class="messagePause">La pause sera active à la fin de la musique</span>
 
@@ -83,6 +87,14 @@
         <div id="compteur"></div>
 
         <div id="reponse"></div>
+    </div>
+
+    <div id="barreInfo">
+        <div>
+            <h4>Information :</h4>
+            <div id="numberMusique">0/50 musiques</div>
+            <div class="containerMusiquePasse"></div>
+        </div>
     </div>
 
     

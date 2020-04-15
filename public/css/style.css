@@ -161,4 +161,45 @@ header{
     text-align: center;
 }
 
+#barreInfo{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #02001a;
+    border: solid 1px white;
+    color: white;
+    height: auto;
+    width: 300px;
+    text-align: center;
+}
+#barreInfo h4{
+    letter-spacing: 2px;
+    margin: 0;
+    background-color: white;
+    color: black;
+}
+#numberMusique{
+    border: solid 1px white;
+}
+.containerMusiquePasse{
+    height: 450px;
+    overflow-Y: scroll;
+}
+.containerMusiquePasse > div{
+    display: flex;
+    font-size: 12px;
+    width: 100%;
+    text-align: left;
+}
+.containerMusiquePasse .idvideo{
+    width: 10%;
+}
+.containerMusiquePasse .titreVideo{
+    width: 45%;
+}
+.containerMusiquePasse .oeuvreVideo{
+    width: 45%;
+}
+
 

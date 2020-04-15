@@ -60,6 +60,14 @@
             <select id="theme" required="required">
                 <option value="film">Film</option>
                 <option value="musique">Musique</option>
+                <option value="jeuxvideo">Jeux vidéo</option>
+                <option value="serie">Série</option>
+                <option value="dessinanime">Dessin animé</option>
+                <option value="filmanimation">Film d'animation</option>
+                <option value="manga">Manga</option>
+                <option value="meme">Même</option>
+                <option value="youtube">Youtuber</option>
+                <option value="repliqueculte">Répliques cultes</option>
             </select>
         </div>
 
@@ -176,11 +184,11 @@
             //console.log(idvideo);
 
             if(titre == ""){
-                error("Tu as oublié le TITRE... Tu te fou de ma gueule ?!?");
+                error("Tu as oublié le TITRE... Tu te fous de ma gueule ?!?");
                 return;
             }
             else if(oeuvre == ""){
-                error("T'es le plus gros des enculés ! La prochaine fois que tu oublie l'oeuvre/artiste, je te nique ta race !");
+                error("T'es le plus gros des enculés ! La prochaine fois que tu oublies l'oeuvre/artiste, je te nique ta race !");
                 return;
             }
             else if(desc == ""){
@@ -188,27 +196,27 @@
                 return;
             }
             else if(titre.includes('?') || titre.includes('!') || titre.includes('..') || titre.includes('&')){
-                error('Pas de ?,!,..,& dans le titre , STP !"Louis est pas trop fait pour etre developpeur..."');
+                error('Pas de ?,!,..,& dans le titre , STP ! Louis est pas trop fait pour etre developpeur...');
                 return;
             }
             else if(oeuvre.includes('?') || oeuvre.includes('!') || oeuvre.includes('..') || oeuvre.includes('&')){
-                error('Pas de ?,!,..,& dans l eouvre/artiste  , STP !"Louis est pas trop fait pour etre developpeur..."');
+                error('Pas de ?,!,..,& dans l eouvre/artiste  , STP ! Louis est pas trop fait pour etre developpeur... ');
                 return;
             }
             else if(desc.includes('?') || desc.includes('!') || desc.includes('..') || desc.includes('&')){
-                error('Pas de ?,!,..,& dans la description , STP !"Louis est pas trop fait pour etre developpeur..."');
+                error('Pas de ?,!,..,& dans la description , STP ! Louis est pas trop fait pour etre developpeur... ');
                 return;
             }
             else if(timer == ""){
-                error("Si tu veux pas de timer... Fou au moins un 0.... Grosse merde");
+                error("Si tu veux pas de timer... Fous au moins un 0.... Grosse merde");
                 return;
             }
             else if(annee == ""){
-                error("Et ta musique ? Elle a pas d'année ? J'vais te fraper !");
+                error("Et ta musique ? Elle a pas d'année ? J'vais te frapper !");
                 return;
             }
             else if(idvideo == ""){
-                error("Et ton lien youtube ? Il est ou ? Tu m'explique ? Tu veux une rotule cassé ?");
+                error("Et ton lien youtube ? Il est où ? Tu m'expliques ? Tu veux une rotule cassée ?");
                 return;
             }
             else{
