@@ -168,16 +168,7 @@
             timer = $('#timer').val();
             diff = $('#diff').val();
             annee = $('#annee').val();
-
-            var idvideo = getUrlVars()["v"];
-            function getUrlVars() {
-                var vars = {};
-                var parts = $('#link').val().replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-                    vars[key] = value;
-                });
-                return vars;
-            }
-
+            idvideo = $('#link').val();
             theme = $('#theme').val();
             sousCat = $('#SelectCatMusique').val();
 
