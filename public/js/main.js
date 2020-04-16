@@ -153,6 +153,9 @@ $(document).ready(function() {
         //Apparation button play Pause
         $("#pause").css({"display" : "flex"});
 
+        //Apparition des informations
+        $("#barreInfo").css({"display" : "block"});
+
 
         $(".formulaire").hide();
         $("#button-start").hide();

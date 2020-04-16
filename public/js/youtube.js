@@ -41,3 +41,27 @@
   function stopVideo() {
     player.stopVideo();
   }
+
+
+
+
+  setTimeout(function(){
+    try {
+      player.loadVideoById({
+        videoId: "kB_-Evud3oc",
+        startSeconds: 0,
+        endSeconds: 0.01
+      });
+    }
+    catch(error) {
+      window.location.href = "/";
+    }
+    
+    
+  } , 1000);
+
+  setTimeout(function(){
+    $('#load').hide();
+  }, 1500)
+
+  
