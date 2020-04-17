@@ -7,9 +7,7 @@
 <div>
     <header>
         <img src="{{ asset('images/logoBlindTest.png') }}" />
-        <h1><span>(version Alpha)</span> </h1>
     </header>
-    
 
     <div class="formulaire">
         <div class="boxForm">
@@ -39,18 +37,22 @@
 
         <div class="boxForm">
             <h5>Thème (s) :</h5>
-            <p>
-                <input id="checkThemeFilms" type="checkbox" checked/> Films<br>
-                <input id="checkThemeMusiques" type="checkbox" checked/> Musiques<br>
-                <input id="checkThemeJeuxVideo" type="checkbox" checked/> Jeux vidéo<br>
-                <input id="checkThemeSeries" type="checkbox" checked/> Séries<br>
-                <input id="checkThemeDessinAnime" type="checkbox" checked/> Dessin animé<br>
-                <input id="checkThemeFilmAnimation" type="checkbox" checked/> Film d'animation<br>
-                <input id="checkThemeManga" type="checkbox" checked/> Manga<br>
-                <input id="checkThemeMeme" type="checkbox" checked/> Même<br>
-                <input id="checkThemeYoutuber" type="checkbox" checked/> Youtuber<br>
-                <input id="checkThemeRepliqueCulte" type="checkbox" checked/> Répliques cultes<br>
-            </p>
+            <div>
+                <div>
+                    <input id="checkThemeFilms" type="checkbox" checked/> Films<br>
+                    <input id="checkThemeMusiques" type="checkbox" checked/> Musiques<br>
+                    <input id="checkThemeJeuxVideo" type="checkbox" checked/> Jeux vidéo<br>
+                    <input id="checkThemeSeries" type="checkbox" checked/> Séries<br>
+                    <input id="checkThemeDessinAnime" type="checkbox" checked/> Dessin animé<br>
+                </div>
+                <div>
+                    <input id="checkThemeFilmAnimation" type="checkbox" checked/> Film d'animation<br>
+                    <input id="checkThemeManga" type="checkbox" checked/> Manga<br>
+                    <input id="checkThemeMeme" type="checkbox" checked/> Même<br>
+                    <input id="checkThemeYoutuber" type="checkbox" checked/> Youtuber<br>
+                    <input id="checkThemeRepliqueCulte" type="checkbox" checked/> Répliques cultes<br>
+                </div>
+            </div>
         </div>
 
         <div class="boxForm sousTheme">
@@ -63,9 +65,9 @@
                     <input id="checkThemeRap" type="checkbox" checked/> Rap<br>
                     <input id="checkThemeRock" type="checkbox" checked/> Rock<br>
                     <input id="checkThemePunk" type="checkbox" checked/> Punk<br>
-                    <input id="checkThemeMetal" type="checkbox" checked/> Metal<br>
                 </div>
                 <div>
+                    <input id="checkThemeMetal" type="checkbox" checked/> Metal<br>
                     <input id="checkThemeReggae" type="checkbox" checked/> Reggae<br>
                     <input id="checkThemeElectro" type="checkbox" checked/> Electro<br>
                     <input id="checkThemeJazz" type="checkbox" checked/> Jazz<br>
@@ -76,6 +78,7 @@
         </div>
     
     </div>
+    <div id="nbMusiqueTotal"></div>
     <div id="button-start" class="button">NOUVELLE PARTIE <span><i class="fas fa-chevron-right"></i> <i class="fas fa-chevron-right"></i></span></div>
 
     <div id="Game">
@@ -88,6 +91,9 @@
         <div id="compteur"></div>
 
         <div id="reponse"></div>
+
+        <div id="report">signaler</div>
+
     </div>
 
     <div id="barreInfo">
@@ -101,7 +107,7 @@
     
 
     
-    <a href="/admin" class="addMusique">Ajouter des musiques</a>
+    <a href="/admin" class="addMusique"><i class="fas fa-plus"></i> Ajouter des musiques</a>
 
 
 

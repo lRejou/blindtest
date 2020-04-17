@@ -40,8 +40,28 @@ function fairePause(){
     }
 }
 
+function affichageNbSong(){
+    saveDataCheck();
+    getJson();
+    tempsTotalDuBlindTest = tempsBlindTest*nbMusique;
+    date = millisToMinutesAndSeconds(tempsTotalDuBlindTest);
+    $("#nbMusiqueTotal").html("<div>Nombre de musiques<br> " + nbMusique + "</div><div>Temps<br>" + date + "minutes</div>");
+
+
+
+    function millisToMinutesAndSeconds(millis) {
+        var minutes = Math.floor(millis / 60000);
+        var seconds = ((millis % 60000) / 1000).toFixed(0);
+        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+      }
+}
+
+
 // Fonction de lancement du jeu
 $(document).ready(function() {
+    setTimeout(() => {
+        affichageNbSong();
+    }, 1000); 
     $( "#button-start" ).click(function() {
         initConfig();
         //Recuperation de la liste des ID des musiques du blind test
@@ -51,10 +71,20 @@ $(document).ready(function() {
         startGame();
     });
 
+    $( ".boxForm input" ).click(function() {
+        affichageNbSong();
+    });
+
 });
 
 
-    function initConfig(){
+
+    function saveDataCheck(){
+
+        difficulte = 0000;
+        theme = [];
+        soustheme = [];
+
         //Temps du blind test
         valDureeMusique = $("#dureeMusique").val();
         tempsBlindTest = parseInt(valDureeMusique) * 1000;
@@ -148,7 +178,12 @@ $(document).ready(function() {
         if($('#checkThemeNewwave').is(':checked')){
             soustheme.push("newwave");
         }
+    }
 
+    function initConfig(){
+        
+
+        saveDataCheck();
 
         //Apparation button play Pause
         $("#pause").css({"display" : "flex"});
@@ -221,6 +256,7 @@ $(document).ready(function() {
 
     function lancementVideo(oneMusique){
 
+
         var startVideo = oneMusique['timeur'];
         var endVideo = startVideo + 50;
 
@@ -251,10 +287,16 @@ $(document).ready(function() {
 
         function affichageTimer(){
             $("#compteur").html(time)
+            $("#compteur").css({"display" : "block"});
+            $("#compteur").css({"animation" : "compteur 1s infinite"});
             timer();
         }
     }
     function affichageReponse(oneMusique){
+        $("#report").css({"display" : "block"});
+        idMusiqueEnCour = oneMusique['id'];
+        $("#compteur").css({"animation" : "cc"});
+        $("#compteur").css({"display" : "none"});
         console.log(oneMusique);
         $("#reponse").html(" <span class='oeuvre'>"+oneMusique['oeuvre']+"</span><span class='titre'>"+oneMusique['titre']+"</span><span class='description'>"+oneMusique['description']+"</span>");
         //$("#reponse").html(" <span class='oeuvre'>"+oneMusique['oeuvre']+"</span><span class='titre'>Sophie, tu bois 10 gorgées</span>");
@@ -264,7 +306,8 @@ $(document).ready(function() {
 
 
         setTimeout(function(){
-            $("#reponse").html("...");
+            $("#reponse").html("");
+            $("#report").css({"display" : "none"});
         },tempsDeLaSolution )
     }
 

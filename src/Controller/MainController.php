@@ -7,6 +7,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\MusiquesRepository;
 use App\Entity\Musiques;
+use App\Repository\ReportRepository;
+use App\Entity\Report;
 
 class MainController extends AbstractController
 {
@@ -54,6 +56,31 @@ class MainController extends AbstractController
         return $this->json($onemusique);
         //return $this->render('main/index.html.twig');
     }
+
+
+    /**
+     * @Route("/report/{id}", name="report", methods={"GET"})
+     */
+    public function report( ReportRepository $reportRepository, Request $request )
+    {
+        $id = $request->get('id');
+
+
+        $report = new report();
+        $report->setIdvideo($id);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($report);
+        $em->flush();
+
+        return $this->json();
+        //return $this->render('main/index.html.twig');
+    }
+
+
+
+
+
 
 
     /**
@@ -170,6 +197,14 @@ class MainController extends AbstractController
         $info = $musiquesRepository->findOneBy(["id" => $request->get('id')]);
 
         return $this->render('admin/modif.html.twig' , ["musiques" => $musiques , "info" => $info] );
+    }
+
+        /**
+     * @Route("/admin/report" , name="adminreport", methods={"GET"})
+     */
+    public function adminreport(MusiquesRepository $musiquesRepository, Request $request , ReportRepository $reportRepository)
+    {
+        return $this->render('admin/report.html.twig' );
     }
 
 

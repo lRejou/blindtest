@@ -55,11 +55,11 @@ body{
 }
 .buttonSetting{
     color: #2980B9;
-    font-size: 18px;
+    font-size: 15px;
     background-color: white;
-    height: 30px;
-    width: 30px;
-    line-height: 30px;
+    height: 15px;
+    width: 15px;
+    line-height: 15px;
     text-align: center;
     display: block;
     border-radius: 50%;
@@ -69,15 +69,16 @@ body{
     background-color: #2980B9;
     border-radius: 50%;
     transition: 0.3s;
+    font-size: 10px;
     transform: scale(1.6);
 }
 .buttonDelete{
     color: #CB4335;
-    font-size: 18px;
+    font-size: 15px;
     background-color: white;
-    height: 30px;
-    width: 30px;
-    line-height: 30px;
+    height: 15px;
+    width: 15px;
+    line-height: 15px;
     text-align: center;
     display: block;
     border-radius: 50%;
@@ -87,6 +88,7 @@ body{
     background-color: #CB4335;
     border-radius: 50%;
     transition: 0.3s;
+    font-size: 10px;
     transform: scale(1.6);
 }
 .buttonAdd{
@@ -134,9 +136,69 @@ body{
     overflow-Y: scroll;
     height: 1000px;
 }
+
+.buttonReport{
+    color: white;
+    background-color: #B03A2E ;
+    border-radius: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    display: block;
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    transition: 0.3s;
+    position: relative;
+}
+.buttonReport:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 10px 10px silver;
+    transition: 0.3s;
+}
+.buttonReport div{
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50% , -50%);
+    background-color: white;
+    color: #B03A2E;
+    border: solid 1px #B03A2E;
+    border-radius: 50%;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0;
+}
+.buttonReport div > span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .container-titre h1{
     padding-left: 50px;
 }
+
+
+
 
 .add-onetitre{
     display: flex;
@@ -176,7 +238,7 @@ body{
 .containerAllMusique{
     height: 600px;
     overflow-y: scroll;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .h1AddMusique{

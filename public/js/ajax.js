@@ -14,7 +14,7 @@
 
 function getJson(){
 
-    var dataPage = 'diff=' + difficulte + '&theme=' + theme + '&soustheme=' + soustheme  ;
+    var dataPage = 'diff=' + difficulte + '&theme=' + theme + '&soustheme=' + soustheme ;
 
     //var dataPage = $(dataPage).serialize();
 
@@ -26,6 +26,7 @@ function getJson(){
         data : dataPage,
         url: "/listsound",
         complete: function(data) {
+            console.log("blabla");
             listID = JSON.parse(data.responseText);
             nbMusique = listID.length;
         }
