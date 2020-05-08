@@ -189,7 +189,7 @@ $(document).ready(function() {
         $("#pause").css({"display" : "flex"});
 
         //Apparition des informations
-        $("#barreInfo").css({"display" : "block"});
+        //$("#barreInfo").css({"display" : "block"});
 
 
         //$(".formulaire").hide();

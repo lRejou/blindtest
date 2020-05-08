@@ -17,6 +17,11 @@ $(document).ready(function() {
                 }
             });
 
+        $("#msgReport").css({"display" : "block"});
+
+        setTimeout(function(){
+            $("#msgReport").css({"display" : "none"});
+        }, 2000);
         
     });
 });

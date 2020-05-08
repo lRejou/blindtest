@@ -17,6 +17,7 @@ $(document).ready(function() {
     });
 
 
+    /*=====================Boutton Setting=======================*/
     $( ".opensetting" ).click(function() {
         $(".formulaire").css({"display" : "block" , "opacity" : "1" , "animation" : "openForm 0.5s"});
     });
@@ -29,6 +30,18 @@ $(document).ready(function() {
         
     });
 
+    /*=====================Boutton Info=======================*/
+    $( "#openInfo" ).click(function() {
+        $("#barreInfo").css({"display" : "block"});
+        $("#openInfo").css({"display" : "none"});
+    });
+
+    $( "#closeInfo" ).click(function() {
+        $("#barreInfo").css({"display" : "none"});
+        $("#openInfo").css({"display" : "block"});
+    });
+
+    /*=====================Signalement=======================*/
     
 
 

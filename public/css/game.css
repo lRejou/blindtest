@@ -113,6 +113,16 @@ h6{
     font-size: 35px;
 }
 
+@media screen and (min-width: 640px) {
+    .buttonSettingGame{
+        width: 600px;
+        height: 80px;
+        margin: 0 auto;
+        position: relative;
+        font-family: 'Orbitron', sans-serif;
+    }
+  }
+
 /*---------------Menu setting----------------------*/
 
 .formulaire{
@@ -241,6 +251,20 @@ input[type="checkbox"]:checked + label > i{
     }
 }
 
+@media screen and (min-width: 640px) {
+    .formulaire{
+        width: 600px;
+        height: 96%;
+        top: 2%;
+        left: 2%;
+    }
+    .closeSetting{
+        top: 100px;
+        left: 5px;
+    }
+  }
+
+
 /*------------------- regle du jeu----------------*/
 
 #regleJeu{
@@ -259,6 +283,12 @@ input[type="checkbox"]:checked + label > i{
 #regleJeu > div{
     margin: 5px 0px;
 }
+
+@media screen and (min-width: 640px) {
+    #regleJeu{
+        width: 600px;
+    }
+  }
 
 /*---------------footer-------------*/
 #footer{
@@ -352,6 +382,20 @@ input[type="checkbox"]:checked + label > i{
     line-height: 50px;
     text-align: center;
 }
+#msgReport{
+    position: absolute;
+    top: 100px;
+    left: 0%;
+    width: 90%;
+    margin: 0px 5%;
+    transform: translateY(-50%);
+    padding: 20px 0px;
+    background-color: #2980B9;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px black;
+    text-align: center;
+    display: none;
+}
 
 
 #reponse{
@@ -392,4 +436,78 @@ input[type="checkbox"]:checked + label > i{
         opacity: 0;
         transform: translateY(100%);
     }
+}
+
+/*---------------------------barre info-----------------------*/
+#openInfo{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    height: 50px;
+    width: 50px;
+    background-color: #353635;
+    color: white;
+    line-height: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0px 0px 5px black;
+}
+#closeInfo{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 50px;
+    width: 50px;
+    background-color: #353635;
+    color: white;
+    line-height: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0px 0px 5px black;
+}
+#barreInfo{
+    width: 96%;
+    height: calc(96% - 70px);
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    box-shadow: 0px 0px 10px black;
+    display: none;
+}
+#barreInfo > div{
+    width: 100%;
+    height: 100%;
+    background-color: #353635;
+}
+#barreInfo > div > h4{
+    width: 100%;
+    height: auto;
+    display: block;
+    background-color: #2980B9;
+    color: white;
+    margin: 0;
+    text-align: center;
+}
+#barreInfo > div > #numberMusique{
+    text-align: center;
+    font-weight: bolder;
+}
+#barreInfo > div > .containerMusiquePasse{
+    width: 100%;
+    overflow-y: scroll;
+    height: calc(100% - 50px);
+}
+#barreInfo > div > .containerMusiquePasse > div{
+    display: flex;
+    text-align: left;
+    border-bottom: 1px solid grey;
+}
+#barreInfo > div > .containerMusiquePasse > div > .idvideo{
+    width: 30px;
+}
+#barreInfo > div > .containerMusiquePasse > div > .titreVideo{
+    width: calc(50% - 15px);
+}
+#barreInfo > div > .containerMusiquePasse > div > .oeuvreVideo{
+    width: calc(50% - 15px);
 }
