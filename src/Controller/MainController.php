@@ -7,6 +7,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\MusiquesRepository;
 use App\Entity\Musiques;
+use App\Repository\ProposeRepository;
+use App\Entity\Propose;
 use App\Repository\ReportRepository;
 use App\Entity\Report;
 
@@ -17,7 +19,62 @@ class MainController extends AbstractController
      */
     public function index(MusiquesRepository $musiquesRepository )
     {
+        return $this->redirect('/accueil');
         return $this->render('main/index.html.twig');
+    }
+
+    /**
+     * @Route("/accueil", name="accueil")
+     */
+    public function accueil(MusiquesRepository $musiquesRepository )
+    {
+        return $this->render('main/accueil.html.twig');
+    }
+
+    /**
+     * @Route("/proposemusique", name="proposeMusique" , methods={"GET" , "POST"})
+     */
+    public function proposeMusique(MusiquesRepository $musiquesRepository , Request $request , ProposeRepository $proposeRepository)
+    {
+        if( !empty( $request->get('titre')) ){
+
+
+
+            
+            $propose = new propose();
+            $propose->setTitre($request->get('titre'));
+            $propose->setOeuvre($request->get('oeuvre'));
+            $propose->setDescription($request->get('desc'));
+            $propose->setTimeur($request->get('timer'));
+            $propose->setDifficulte($request->get('diff'));
+            $propose->setAnnee($request->get('annee'));
+            $propose->setLink($request->get('urlvideo'));
+            $propose->setSousCat($request->get('SelectCatMusique'));
+            $propose->setTheme($request->get('theme'));
+            $propose->setReport(0);
+            $propose->setDateadd(new \DateTime());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($propose);
+            $em->flush();
+            
+            return $this->redirect('/proposemusique');
+        }
+
+
+        return $this->render('main/proposemusique.html.twig');
+    }
+
+    /**
+     * @Route("/listsong", name="listsong", methods={"GET" , "POST"})
+     */
+    public function listsong(MusiquesRepository $musiquesRepository, Request $request  )
+    {
+
+        $listmusique = $musiquesRepository->findAll();
+
+
+        return $this->json($listmusique);
     }
 
     /**
@@ -61,16 +118,16 @@ class MainController extends AbstractController
     /**
      * @Route("/report/{id}", name="report", methods={"GET"})
      */
-    public function report( ReportRepository $reportRepository, Request $request )
+    public function report( MusiquesRepository $musiquesRepository, Request $request )
     {
         $id = $request->get('id');
 
+        $musique = $musiquesRepository->findOneBy(["id" => $id]);
 
-        $report = new report();
-        $report->setIdvideo($id);
+        $musique->setReport(1);
 
         $em = $this->getDoctrine()->getManager();
-        $em->persist($report);
+        $em->persist($musique);
         $em->flush();
 
         return $this->json();
@@ -97,11 +154,14 @@ class MainController extends AbstractController
     public function adminType( MusiquesRepository $musiquesRepository, Request $request )
     {
         $musiques = $musiquesRepository->findBy(array(), array($request->get('type') => $request->get('order')));
+
+        $report = $musiquesRepository->findBy(["report" => 1]);
         
         return $this->render('admin/index.html.twig' , [
             "musiques" => $musiques,
              "type" => $request->get('type'),
-             "order" => $request->get('order')
+             "order" => $request->get('order'),
+             "report" => $report
              ]);
     }
 
@@ -177,6 +237,7 @@ class MainController extends AbstractController
         $musique->setLink($request->get('idvideo'));
         $musique->setTheme($request->get('theme'));
         $musique->setSousCat($request->get('souscat'));
+        $musique->setReport(0);
 
     
         $em = $this->getDoctrine()->getManager();
@@ -199,13 +260,74 @@ class MainController extends AbstractController
         return $this->render('admin/modif.html.twig' , ["musiques" => $musiques , "info" => $info] );
     }
 
-        /**
+    /**
      * @Route("/admin/report" , name="adminreport", methods={"GET"})
      */
     public function adminreport(MusiquesRepository $musiquesRepository, Request $request , ReportRepository $reportRepository)
     {
-        return $this->render('admin/report.html.twig' );
+
+        $report = $musiquesRepository->findBy(["report" => 1]);
+
+        return $this->render('admin/report.html.twig' , ["reports" => $report] );
     }
+
+    /**
+     * @Route("/admin/propose" , name="admin_propose", methods={"GET" , "POST"})
+     */
+    public function adminPropose(ProposeRepository $proposeRepository, Request $request)
+    {
+        $propose = $proposeRepository->findAll();
+
+        return $this->render('admin/propose.html.twig' , ["proposes" => $propose] );
+    }
+
+    /**
+     * @Route("/admin/validepropose/{id}" , name="admin_validepropose", methods={"GET" , "POST"})
+     */
+    public function adminProposeValide(ProposeRepository $proposeRepository, MusiquesRepository $musiquesRepository, Request $request)
+    {
+        $propose = $proposeRepository->findOneBy(["id" => $request->get('id')]);
+
+
+            $newMusique = new musiques();
+            $newMusique->setTitre($propose->getTitre());
+            $newMusique->setOeuvre($propose->getOeuvre());
+            $newMusique->setDescription($propose->getDescription());
+            $newMusique->setTimeur($propose->getTimeur());
+            $newMusique->setDifficulte($propose->getDifficulte());
+            $newMusique->setAnnee($propose->getAnnee());
+            $newMusique->setLink($propose->getLink());
+            $newMusique->setSousCat($propose->getSousCat());
+            $newMusique->setTheme($propose->getTheme());
+            $newMusique->setReport(0);
+            $newMusique->setDateadd($propose->getDateadd());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($newMusique);
+            $em->flush();
+
+            $em->remove($propose);
+            $em->flush();
+
+        return $this->redirect('/admin/propose');
+    }
+
+        /**
+     * @Route("/admin/deletepropose/{id}" , name="admin_Deletepropose", methods={"GET" , "POST"})
+     */
+    public function adminDeleteValide(ProposeRepository $proposeRepository, MusiquesRepository $musiquesRepository, Request $request)
+    {
+        $propose = $proposeRepository->findOneBy(["id" => $request->get('id')]);
+
+            
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($propose);
+        $em->flush();
+
+        return $this->redirect('/admin/propose');
+    }
+
+
 
 
 }

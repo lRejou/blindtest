@@ -1,0 +1,107 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}   
+    <div class="container">
+
+        <h1 class="titrePageIndex">Musique report</h1>
+
+        <div class="container-index-head">
+        </div>
+
+
+            <div class="musiquestitre">
+
+                <div>TITRE
+                </div>
+
+                <div>OEUVRE / ARTISTE
+                </div>
+
+                <div>THEME
+                </div>
+
+                <div>Sous-theme
+                </div>
+
+                <div>ANNÉE
+                </div>
+
+                <div></div>
+
+
+
+
+
+            </div>
+
+            <div class="containerAllMusique">
+            {% for report in reports %}
+
+                <div class="musiques">
+                    
+                    <div>{{report.titre}}</div>
+                    <div>{{report.oeuvre}}</div>
+                    <div>{{report.theme}}</div>
+                    <div>{{report.sousCat}}</div>
+                    <div>{{report.annee}}</div>
+                    <div class="SettindAndDelete">
+                        <a class="buttonSetting" href="/admin/modif/{{report.id}}"><i class="fas fa-sliders-h"></i></a>
+
+                        <a class="buttonDelete" onclick="deleteSong('{{report.id}}')" ><i class="far fa-trash-alt"></i></a>
+
+                    
+                    </div>
+                
+                
+                
+                </div>
+
+            {% endfor %}
+
+            
+            </div>
+
+    </div>
+
+    <div id="modalDelete">
+        <div>
+            <img src="https://lh3.googleusercontent.com/proxy/9qyWAUGopsohXK1UkOvm1I3y7VpkYe3P3z5QAvmy79WbmuXKlrXty-xnuc3KN1BGvVhmik-MGI-bIHJVlH78qhIii7ja4FmfWZuBV1khNTyWVAC85mnk" />
+            <h3>Tu es sur de vouloir faire ça ?</h3>
+            <div>
+                <div class="nonDelete" onclick="closeModal()">
+                    Non !
+                </div>
+                <div class="ouiDelete" onclick="deleteConfirm()">
+                    Oui !
+                </div>
+            </div>
+
+            <div class="closeModal" onclick="closeModal()"><i class="fas fa-times"></i></div>
+
+        </div>
+    </div>
+
+
+
+                        <script>
+
+                        var musiqueDelete = "";
+/*href="/admin/delete/"*/
+                        function deleteSong(id){
+                            musiqueDelete = id;
+                            $('#modalDelete').css({"display" : "block"});
+                        }
+
+                        function deleteConfirm(){
+                            document.location.href="/admin/delete/"+musiqueDelete; 
+                        }
+
+                        function closeModal(){
+                            musiqueDelete = "";
+                            $('#modalDelete').css({"display" : "none"});
+                        }
+
+                        </script>
+{% endblock %}

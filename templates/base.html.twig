@@ -4,29 +4,23 @@
         <meta charset="UTF-8">
         <title>{% block title %}Blind Test ! By Louis Réjou ( version beta ){% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="{{ asset('js/youtube.js') }}"></script>
-        <script src="{{ asset('js/ajax.js') }}"></script>
-        <script src="{{ asset('js/main.js') }}"></script>
-        <script src="{{ asset('js/menu.js') }}"></script>
-        <script src="{{ asset('js/report.js') }}"></script>
-        <script src="{{ asset('js/propMusique.js') }}"></script>
-        
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
-        <link rel="icon" href="{{ asset('images/logo.png') }}" />
-        
-
-        <link href="https://fonts.googleapis.com/css?family=Viga&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
-
-        <script src="https://kit.fontawesome.com/a393bd0d5f.js" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div id="load"><img src="{{ asset('images/load.gif') }}" /></div>
     
         {% block body %}{% endblock %}
+
+        <div id="footer">
+            <a class="compte" href="#"><i class="fas fa-user"></i></a>
+            <a class="gold" href="#"><i class="fas fa-coins"></i> 2500</a>
+        </div>
+        
+        
+        
+        </div>
+
         {% block javascripts %}{% endblock %}
         <script src="{{ asset('js/canvas.js') }}"></script>
     </body>

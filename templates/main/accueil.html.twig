@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BindTest On The Flex!{% endblock %}
+
+{% block stylesheets %}
+
+    <script src="https://kit.fontawesome.com/a393bd0d5f.js" crossorigin="anonymous"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="{{ asset('js/youtube.js') }}"></script>
+        <script src="{{ asset('js/ajax.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ asset('js/menu.js') }}"></script>
+        <script src="{{ asset('js/report.js') }}"></script>
+        <script src="{{ asset('js/propMusique.js') }}"></script>
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/game.css') }}">
+
+        <link rel="icon" href="{{ asset('images/logo.png') }}" />
+
+        <link href="https://fonts.googleapis.com/css?family=Viga&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+
+
+        <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block body %}
+    <header>
+        <img src="{{ asset('images/logoBlindTest.png') }}" />
+    </header>
+
+    <section id="menu">
+        <h1>Bienvenue sur <br> BLINDTEST On The Flex</h1>
+
+        <div class="buttonSettingGame"><div class="opensetting"><span>Configurez votre partie</span></div><div id="button-start" class="buttonPlay"><i class="fas fa-play"></i></div></div>
+
+        <div id="regleJeu">
+            <h2>Règle du jeu</h2>
+            <div><span>1.</span> Trouvez vous des amis !</div>
+            <div><span>2.</span> Confugurez votre blind test</div>
+            <div><span>3.</span> Lancez une partie</div>
+            <div><span>4.</span> Celui qui cri le plus vite la bonne reponse gagne !</div>
+            <div><span>5.</span> Enjoy !</div>
+        </div>
+
+
+        <div class="formulaire">
+            <div class="closeSetting"><i class="fas fa-chevron-left"></i></div>
+            <h2>Reglage de votre BlindTest</h2>
+            <div id="nbMusiqueTotal"></div>
+            <div id="refrechNbMusique"><i class="fas fa-sync-alt"></i></div>
+
+
+            <div class="boxForm">
+                <h5>Durée</h5>
+                <p>
+                    <h6>Durée de la musique : <span class="annotation">(en seconde)</span></h6>
+                    <input id="dureeMusique" type="number" value="25"/><br>
+                    <span class="annotation">Décompte + Réponse</span>
+                </p>
+                <p>
+                    <h6>Durée de la réponse : <span class="annotation">(en seconde)</span></h6>
+                    <input id="dureeReponse" type="number" value="5"/>
+                </p>
+            </div>
+            <div class="boxForm">
+                <h5>Difficulté</h5>
+                <p>
+                    <input id="checkDiff1" type="checkbox" checked/><label for="checkDiff1"><i class="fas fa-check"></i></label> Facile<br>
+                    <input id="checkDiff2" type="checkbox" checked/><label for="checkDiff2"><i class="fas fa-check"></i></label> Difficile<br>
+                    <input id="checkDiff3" type="checkbox" checked/><label for="checkDiff3"><i class="fas fa-check"></i></label> Ultra difficile<br>
+                    <input id="checkDiff4" type="checkbox" checked/><label for="checkDiff4"><i class="fas fa-check"></i></label> Impossible<br>
+                </p>
+            </div>
+            <div class="boxForm">
+                <h5>Thème (s) :</h5>
+                <div>
+                    <div>
+                        <input id="checkThemeFilms" type="checkbox" checked/><label for="checkThemeFilms"><i class="fas fa-check"></i></label> Films<br>
+                        <input id="checkThemeMusiques" type="checkbox" checked/><label for="checkThemeMusiques"><i class="fas fa-check"></i></label> Musiques<br>
+                        <input id="checkThemeJeuxVideo" type="checkbox" checked/><label for="checkThemeJeuxVideo"><i class="fas fa-check"></i></label> Jeux vidéo<br>
+                        <input id="checkThemeSeries" type="checkbox" checked/><label for="checkThemeSeries"><i class="fas fa-check"></i></label> Séries<br>
+                        <input id="checkThemeDessinAnime" type="checkbox" checked/><label for="checkThemeDessinAnime"><i class="fas fa-check"></i></label> Dessin animé<br>
+                    </div>
+                    <div>
+                        <input id="checkThemeFilmAnimation" type="checkbox" checked/><label for="checkThemeFilmAnimation"><i class="fas fa-check"></i></label> Film d'animation<br>
+                        <input id="checkThemeManga" type="checkbox" checked/><label for="checkThemeManga"><i class="fas fa-check"></i></label> Manga<br>
+                        <input id="checkThemeMeme" type="checkbox" checked/><label for="checkThemeMeme"><i class="fas fa-check"></i></label> Même<br>
+                        <input id="checkThemeYoutuber" type="checkbox" checked/><label for="checkThemeYoutuber"><i class="fas fa-check"></i></label> Youtuber<br>
+                        <input id="checkThemeRepliqueCulte" type="checkbox" checked/><label for="checkThemeRepliqueCulte"><i class="fas fa-check"></i></label> Répliques cultes<br>
+                    </div>
+                </div>
+            </div>
+            <div class="boxForm sousTheme">
+                <h5>Musique style :</h5>
+                <div>
+                    <div>
+                        <input id="checkThemeAutre" type="checkbox" checked/><label for="checkThemeAutre"><i class="fas fa-check"></i></label> Autre<br>
+                        <input id="checkThemeFrancais" type="checkbox" checked/><label for="checkThemeFrancais"><i class="fas fa-check"></i></label> Français<br>
+                        <input id="checkThemePopulaire" type="checkbox" checked/><label for="checkThemePopulaire"><i class="fas fa-check"></i></label> Populaire<br>
+                        <input id="checkThemeRap" type="checkbox" checked/><label for="checkThemeRap"><i class="fas fa-check"></i></label> Rap<br>
+                        <input id="checkThemeRock" type="checkbox" checked/><label for="checkThemeRock"><i class="fas fa-check"></i></label> Rock<br>
+                        <input id="checkThemePunk" type="checkbox" checked/><label for="checkThemePunk"><i class="fas fa-check"></i></label> Punk<br>
+                    </div>
+                    <div>
+                        <input id="checkThemeMetal" type="checkbox" checked/><label for="checkThemeMetal"><i class="fas fa-check"></i></label> Metal<br>
+                        <input id="checkThemeReggae" type="checkbox" checked/><label for="checkThemeReggae"><i class="fas fa-check"></i></label> Reggae<br>
+                        <input id="checkThemeElectro" type="checkbox" checked/><label for="checkThemeElectro"><i class="fas fa-check"></i></label> Electro<br>
+                        <input id="checkThemeJazz" type="checkbox" checked/><label for="checkThemeJazz"><i class="fas fa-check"></i></label> Jazz<br>
+                        <input id="checkThemeContry" type="checkbox" checked/><label for="checkThemeContry"><i class="fas fa-check"></i></label> Country<br>
+                        <input id="checkThemeNewwave" type="checkbox" checked/><label for="checkThemeNewwave"><i class="fas fa-check"></i></label> New wave<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section id="Game">
+
+        <div id="player"></div>
+
+        <div id="compteur"></div>
+
+        <div id="reponse"></div>
+
+        <div id="pause" onclick="fairePause()"><div><i class="far fa-pause-circle"></i></div><br></div>
+        <span class="messagePause">La pause sera active à la fin de la musique</span>
+
+        <div id="report">signaler</div>
+
+
+    </section>
+
+{% endblock %}
+
+
+
+

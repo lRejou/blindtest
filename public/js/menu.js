@@ -15,4 +15,24 @@ $(document).ready(function() {
             $(".sousTheme input[type=checkbox]").prop("checked", true);
         }
     });
+
+
+    $( ".opensetting" ).click(function() {
+        $(".formulaire").css({"display" : "block" , "opacity" : "1" , "animation" : "openForm 0.5s"});
+    });
+
+    $( ".closeSetting" ).click(function() {
+        $(".formulaire").css({"opacity" : "0", "animation" : "closeForm 0.5s"});
+        setTimeout(function(){
+            $(".formulaire").css({"display" : "none"});
+        }, 500)
+        
+    });
+
+    
+
+
+
 });
+
+

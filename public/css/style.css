@@ -308,3 +308,90 @@ header img{
     transition: 0.3s;
     color: #B03A2E;
 }
+
+
+
+
+/*====================proposeContainer=======================*/
+.proposeContainer{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
+}
+.proposeContainer > div , form{
+    box-shadow: 0px 0px 10px black;
+    background-color: #2f302f;
+    height: 650px;
+    width: 40%;
+}
+.proposeContainer > div, form > h2{
+    text-align: center;
+    margin: 5px 0px;
+}
+.proposeOrga{
+    display: flex;
+    border-bottom: solid 1px silver;
+}
+.proposeOrga > div{
+    width: 130px;
+    text-align: left;
+}
+.proposeListeMusique{
+    height: 560px;
+    width: 100%;
+    overflow-y: scroll;
+    font-size: 10px;
+    
+}
+.proposeListeMusique > div{
+    display: flex;
+    border-bottom: solid 1px black;
+}
+.proposeListeMusique > div > div{
+    width: 130px;
+    text-align: left;
+}
+
+/*---------formulairePropose---------------*/
+.formulairePropose{
+    display: flex;
+    justify-content: space-around;
+}
+.formulairePropose > div {
+    border:solid 1px rgb(63, 63, 63);
+    width: 40%;
+    margin: 30px 5%;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+.formulairePropose > div > div{
+    margin: 20px 0px;
+}
+#videoyoutube{
+    margin: 0px 10px;
+    width: 300px;
+    height: 200px;
+}
+#videoyoutube iframe{
+    width: 100%;
+    height: 100%;
+}
+.PartieIII{
+    display: flex;
+    justify-content: space-between;
+    height: 200px;
+    width: 90%;
+    margin: 0 auto;
+    border:solid 1px rgb(63, 63, 63);
+    border-radius: 5px;
+}
+.buttonValideAdd{
+    height: 30px;
+    width: 200px;
+    margin: 160px 30px 0px 0px;
+    font-size: 18px;
+    font-weight: bold;
+    display: none;
+}

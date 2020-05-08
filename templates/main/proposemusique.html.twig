@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Blind Test ! Ajouter une musique</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+
+        <link rel="icon" href="{{ asset('images/logo.png') }}" />
+
+        <script src="{{ asset('js/listSong.js') }}"></script>
+        <script src="{{ asset('js/propSong.js') }}"></script>
+        
+
+        <link href="https://fonts.googleapis.com/css?family=Viga&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+
+        <script src="https://kit.fontawesome.com/a393bd0d5f.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+    
+        <div>
+            <header>
+                <img src="{{ asset('images/logoBlindTest.png') }}" />
+            </header>
+
+            <div class="proposeContainer">
+
+                <div>
+                    <h2>Liste des musiques</h2>
+                    <div class="proposeOrga">
+                        <div>Nom</div>
+                        <div>Oeuvre/Artiste</div>
+                        <div>Theme</div>
+                        <div>Sous theme</div>
+                        <div>Année</div>
+                        <div>Date</div>
+                    </div>
+                    <div class="proposeListeMusique"></div>
+                </div>
+
+
+
+
+                <form method="POST" action="">
+                    <h2>Ajouter une musique</h2>
+                    
+                    <div class="formulairePropose">
+                        <div>
+                            <div>
+                                <span>Titre de la musique :</span><br>
+                                <input id="titre" name="titre" type="text" placeholder="Titre de la musique" required/>
+                            </div>
+                            <div>
+                                <span>Artiste ou Oeuvre :</span><br>
+                                <input id="oeuvre" name="oeuvre" type="text" placeholder="Artiste ou Oeuvre" required/>
+                            </div>
+                            <div>
+                                <span>Année :</span><br>
+                                <input id="annee" name="annee" type="number" min="0000" placeholder="1990" required/>
+                            </div>
+                            <div>
+                                <span>Description :</span><br>
+                                <input id="desc" name="desc" type="text" value="aucune" required/>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <span>Timer :</span><br>
+                                <input type="number" name="timer" id="timer" value="0" min="0" required/>
+                            </div>
+                            <div>
+                                <span>Theme :</span><br>
+                                <select id="theme" name="theme" required="required">
+                                    <option value="musique">Musique</option>
+                                    <option value="film">Film</option>
+                                    <option value="jeuxvideo">Jeux vidéo</option>
+                                    <option value="serie">Série</option>
+                                    <option value="dessinanime">Dessin animé</option>
+                                    <option value="filmanimation">Film d'animation</option>
+                                    <option value="manga">Manga</option>
+                                    <option value="meme">Même</option>
+                                    <option value="youtube">Youtuber</option>
+                                    <option value="repliqueculte">Répliques cultes</option>
+                                </select>
+                            </div>
+                            <div>
+                                <span>Sous Theme :</span><br>
+                                <select id="SelectCatMusique" name="SelectCatMusique" required>
+                                    <option value="autre">autre ...</option>
+                                    <option value="français">Français</option>
+                                    <option value="populaire">Populaire</option>
+                                    <option value="rock">Rap</option>
+                                    <option value="rock">Rock</option>
+                                    <option value="punk">Punk</option>
+                                    <option value="metal">Metal</option>
+                                    <option value="reggae">Reggae</option>
+                                    <option value="electro">Electro</option>
+                                    <option value="jazz">Jazz</option>
+                                    <option value="country">Country</option>
+                                    <option value="new wave">New wave</option>
+                                </select>
+                            </div>
+                            <span>Difficulté :</span><br>
+                            <select id="diff" name="diff" required="required">
+                                <option value="0">Facile</option>
+                                <option value="1">Difficile</option>
+                                <option value="2">Ultra difficile</option>
+                                <option value="3">Impossible</option>
+                            </select>
+                            <div>
+                                <span>Lien Youtube :</span><br>
+                                <input id="lien" name="lien" type="text"  required/><div id="test" onclick="testURL()" placeholder="https://www.youtube.com/watch?v=FTQbiNvZqaY">test</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="PartieIII">
+                        <div id="videoyoutube"></div>
+                        <input id="urlvideo" name="urlvideo" value=" "/>
+                        <input type="submit" class="buttonValideAdd" value="valider">
+                    </div>
+                    
+
+
+                </form>
+            
+            </div>
+
+
+
+        
+    </body>
+</html>
+
+
+
+

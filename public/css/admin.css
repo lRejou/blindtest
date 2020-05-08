@@ -109,6 +109,24 @@ body{
     box-shadow: 0px 10px 10px silver;
     transition: 0.3s;
 }
+.buttonPropose{
+    color: white;
+    background-color: #27AE60  ;
+    border-radius: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    display: block;
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    transition: 0.3s;
+}
+.buttonPropose:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 10px 10px silver;
+    transition: 0.3s;
+}
 #valide{
     background-color: #229954;
     color: white;
@@ -361,4 +379,47 @@ body{
     line-height: 50px;
     font-size: 20px;
     display: none;
+}
+
+/*================propose=================*/
+
+.proposeContainer{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+}
+.proposeContainer > div{
+    width: 300px;
+    height: auto;
+    text-align: center;
+    box-shadow: 0px 0px 10px black;
+    margin: 10px;
+}
+.proposeContainer iframe{
+    width: 300px;
+    height: 230px;
+}
+.containerbutton{
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+.containerbutton a{
+    height: 50px;
+    width: 50%;
+    text-align: center;
+    line-height: 50px;
+    transition: 0.3s;
+}
+.containerbutton a:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+.validepropose{
+    color: white;
+    background-color: #1E8449;
+}
+.deletepropose{
+    color: white;
+    background-color: #A93226;
 }

@@ -71,7 +71,7 @@ $(document).ready(function() {
         startGame();
     });
 
-    $( ".boxForm input" ).click(function() {
+    $( "#refrechNbMusique" ).click(function() {
         affichageNbSong();
     });
 
@@ -184,7 +184,7 @@ $(document).ready(function() {
         
 
         saveDataCheck();
-
+        $("#Game").css({"display" : "block"});
         //Apparation button play Pause
         $("#pause").css({"display" : "flex"});
 
@@ -192,8 +192,9 @@ $(document).ready(function() {
         $("#barreInfo").css({"display" : "block"});
 
 
-        $(".formulaire").hide();
-        $("#button-start").hide();
+        //$(".formulaire").hide();
+        $("#menu").hide();
+        //$("#button-start").hide();
 
     }
 

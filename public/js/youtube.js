@@ -54,11 +54,11 @@
       });
     }
     catch(error) {
-      window.location.href = "/";
+      window.location.href = "/accueil";
     }
     
     
-  } , 1000);
+  } , 1500);
 
   setTimeout(function(){
     $('#load').hide();

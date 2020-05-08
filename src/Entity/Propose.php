@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\MusiquesRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ProposeRepository")
  */
-class Musiques
+class Propose
 {
     /**
      * @ORM\Id()
@@ -194,7 +194,7 @@ class Musiques
 
         return $this;
     }
-    
+
     public function getDateadd(): ?\DateTimeInterface
     {
         return $this->dateadd;

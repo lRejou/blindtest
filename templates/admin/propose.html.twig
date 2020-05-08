@@ -1,0 +1,52 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Propose{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <h1 class="titrePageIndex">Liste des musiques</h1>
+
+        <div class="container-index-head">
+            <a class="buttonAdd" href="/admin/add" ><i class="fas fa-plus"></i> Ajouter une musique</a>
+
+            <a class="buttonPropose" href="/admin/propose" ><i class="fas fa-caret-square-up"></i> Propostions des musiques</a>
+
+            <a class="buttonReport" href="/admin/report">Report</a>
+
+            
+        </div>
+
+        <div class="proposeContainer">
+
+        {% for propose in proposes %}
+
+            <div>
+                <iframe width="300" height="230" src="https://www.youtube.com/embed/{{ propose.link }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <p>Titre : {{ propose.titre }}</p>
+                <p>Oeuvre : {{ propose.oeuvre }}</p>
+                <p>Description : {{ propose.description }}</p>
+                <p>Timeur : {{ propose.timeur }}</p>
+                <p>Difficulté : {{ propose.difficulte }}</p>
+                <p>Annee : {{ propose.annee }}</p>
+                <p>Theme : {{ propose.theme }}</p>
+                <p>Sous  cathegories : {{ propose.sousCat }}</p>
+                <p>date d'ajout : {{ propose.dateadd | date("m/d/Y") }}</p>
+
+                <div class="containerbutton">
+                    <a class="validepropose" href="/admin/validepropose/{{ propose.id }}"><i class="fas fa-check"></i></a>
+                    <a class="deletepropose" href="/admin/deletepropose/{{ propose.id }}"><i class="fas fa-times"></i></a>
+                </div>
+            
+            
+            </div>
+
+    {% endfor %}
+
+        </div>
+    </div>
+
+
+{% endblock %}

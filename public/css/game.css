@@ -1,0 +1,395 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    background-color: #242624;
+    color : white;
+}
+header{
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+header > img{
+    height: 100%;
+    width: auto;
+}
+h1{
+    font-family: 'Orbitron', sans-serif;
+}
+h2{
+    font-family: 'Orbitron', sans-serif;
+}
+h3{
+    font-family: 'Orbitron', sans-serif;
+}
+h4{
+    font-family: 'Orbitron', sans-serif;
+}
+h5{
+    font-family: 'Orbitron', sans-serif;
+}
+h6{
+    font-family: 'Orbitron', sans-serif;
+}
+
+/*--------------loader-------------------*/
+#load{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #353635;
+}
+#load img{
+    width: 100%;
+}
+
+
+/*=====================Menu============================*/
+
+/*-----------------------Button principal----------------*/
+#menu{
+    width: 100%;
+    height: calc(100% - 80px);
+    top: 80px;
+    position: fixed;
+}
+#menu h1{
+    text-align: center;
+    display: block;
+    margin: 50px 0px;
+    padding: 0;
+}
+
+.buttonSettingGame{
+    width: 90%;
+    height: 80px;
+    margin: 0 auto;
+    position: relative;
+    font-family: 'Orbitron', sans-serif;
+}
+.buttonSettingGame > .opensetting{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 75%;
+    background-color: #2980B9;
+    color: white;
+    border-radius: 2px 10px 10px 2px;
+    z-index: 100;
+    border-right: #EEEEEE 6px solid;
+}
+.buttonSettingGame > .opensetting > span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    font-size: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.buttonSettingGame > #button-start{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 35%;
+    background-color: white;
+    color: #2980B9;
+    z-index: 99;
+    border-radius: 2px;
+}
+.buttonSettingGame > #button-start > i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(0% , -50%);
+    font-size: 35px;
+}
+
+/*---------------Menu setting----------------------*/
+
+.formulaire{
+    width: 96%;
+    height: 96%;
+    top: 2%;
+    left: 2%;
+    position: absolute;
+    background-color: #353635;
+    box-shadow: 0px 0px 10px black;
+    z-index: 101;
+    overflow-y: scroll;
+    text-align: center;
+    display: none;
+    transition: 0.5s;
+    opacity: 0;
+}
+#nbMusiqueTotal{
+    display: flex;
+    justify-content: space-around;
+    width: 96%;
+    border-radius: 5px 5px 0px 0px;
+    padding: 5px 0px;
+    margin: 10px auto 0px auto;
+    background-color: #2980B9;
+}
+#nbMusiqueTotal > div{
+    width: 50%;
+}
+#refrechNbMusique{
+    height: 30px;
+    line-height: 30px;
+    width: 96%;
+    background-color: #2980B9;
+    margin: 0 auto;
+    border-top: solid 1px white;
+    border-radius: 0px 0px 5px 5px;
+}
+.closeSetting{
+    position: fixed;
+    top: 50px;
+    right: 5px;
+    z-index: 102;
+    background-color: #2980B9;
+    height: 60px;
+    width: 60px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px black;
+    text-align: center;
+    line-height: 60px;
+    font-size: 25px;
+}
+.boxForm{
+    border: solid 1px grey;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.boxForm > h5{
+    font-size: 25px;
+    background-color: white;
+    color: #2980B9;
+    margin: 0 0 20px 0;
+    border-radius: 5px;
+}
+.boxForm > p{
+    text-align: left;
+    display: block;
+    width: 150px;
+    height: auto;
+    margin: 0 auto;
+}
+.boxForm > div{
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+}
+.boxForm label{
+    border: solid 2px silver;
+    height: 22px;
+    width: 22px;
+    display: inline-block;
+    border-radius: 3px;
+    background: rgb(255,98,98);
+    background: linear-gradient(47deg, rgba(255,98,98,1) 0%, rgba(255,207,151,1) 100%);
+    position: relative;
+}
+.boxForm label > i{
+    position: absolute;
+    font-size: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+    display: none;
+}
+input[type="checkbox"]:checked + label{
+    background: rgb(41,128,185);
+background: linear-gradient(47deg, rgba(41,128,185,1) 0%, rgba(27,200,255,1) 100%);
+}
+input[type="checkbox"]:checked + label > i{
+    display: block;
+}
+.boxForm input[type="checkbox"]{
+    display: none;
+}
+
+@keyframes openForm{
+    0%{
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes closeForm{
+    0%{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    100%{
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+}
+
+/*------------------- regle du jeu----------------*/
+
+#regleJeu{
+    font-size: 13px;
+    text-align: center;
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+    box-shadow: 0px 0px 5px black;
+    background-color: #353635;
+    border-radius: 5px;
+}
+#regleJeu h2{
+    text-align: center;
+}
+#regleJeu > div{
+    margin: 5px 0px;
+}
+
+/*---------------footer-------------*/
+#footer{
+    position: fixed;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+}
+#footer > a{
+    width: 50%;
+    height: 100%;
+    line-height: 70px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+}
+#footer > .compte{
+    background-color: #AED6F1 ;
+    color: white;
+    text-shadow: 0px 0px 5px #2980B9;
+}
+#footer > .gold{
+    background-color: #F7DC6F;
+    text-shadow: 0px 0px 5px #D4AC0D;
+    color: white;
+}
+
+
+/*==============================GAME==========================*/
+#Game{
+    display: none;
+    width: 100%;
+    height: calc(100% - 80px);
+    top: 80px;
+    position: fixed;
+}
+#Game iframe{
+    display: none;
+}
+#Game .messagePause{
+    display: none;
+}
+#compteur{
+    font-size: 120px;
+    text-align: center;
+    margin: 50px auto;
+    color: #85C1E9;
+    text-shadow: 0px 0px 3px #154360;
+    font-family: 'Orbitron', sans-serif;
+}
+
+#pause{
+    font-size: 40px;
+    text-align: center;
+    position: fixed;
+    bottom: 120px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+}
+
+.messagePause{
+    font-size: 16px;
+    text-align: center;
+    position: fixed;
+    bottom: 120px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    color: red;
+}
+
+#pause > div{
+    margin: 0 auto;
+}
+
+#report{
+    position: fixed;
+    bottom: 70px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #F5B7B1 ;
+    color: white;
+    text-shadow: 0px 0px 3px #A93226;
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+}
+
+
+#reponse{
+    font-size: 30px;
+    text-align: center;
+    margin: 50px auto;
+}
+#reponse > .oeuvre{
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+}
+#reponse > .titre{
+    display: block;
+    color: #E88712;
+    font-size: 40px;
+    font-family: 'Orbitron', sans-serif;
+}
+#reponse > .description{
+    display: block;
+    font-size: 20px;
+}
+
+
+@keyframes compteur{
+    0%{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    40%{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    60%{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
